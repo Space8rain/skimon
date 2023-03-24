@@ -4,5 +4,8 @@
 /* Header */
 @import url(./style/header/header.css);
 
+/* Cards */
+@import url(./style/cards.css);
+
 /* Footer */
 @import url(./style/footer/footer.css);
