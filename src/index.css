@@ -1,0 +1,8 @@
+@import url(./style/root.css);
+@import url(./style/page.css);
+
+/* Header */
+@import url(./style/header/header.css);
+
+/* Footer */
+@import url(./style/footer/footer.css);
