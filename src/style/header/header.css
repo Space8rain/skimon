@@ -1,36 +1,99 @@
 @import url(../const.css);
 
 .header {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
   box-sizing: border-box;
   width: 100%;
-  height: 56px;
-  border-bottom: 1px solid var(--sec-color);
-  overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: end;
   justify-content: space-between;
-  padding: 0 50px;
-  /* position: fixed; */
 }
 
 .header_title {
-  color: var(--main-text-color);
-  font-size: 22px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  background-color: var(--primary);
+  border-radius: 40px;
   text-decoration: none;
+  padding: 16px 20px;
 }
 
 
 .header_btn {
+  display: flex;
+  justify-content: center;
+  box-sizing: padding-box;
+  align-items: center;
+  padding: 16px 20px;
   cursor: pointer;
-  width: 2em;
-  height: 2em;
-  border: none;
-  background: no-repeat center;
-  background-color: var(--main-text-color);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' fill='var(--main-text-color)' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4,5 L20,5 C20.5522847,5 21,5.44771525 21,6 C21,6.55228475 20.5522847,7 20,7 L4,7 C3.44771525,7 3,6.55228475 3,6 C3,5.44771525 3.44771525,5 4,5 Z M4,17 L20,17 C20.5522847,17 21,17.4477153 21,18 C21,18.5522847 20.5522847,19 20,19 L4,19 C3.44771525,19 3,18.5522847 3,18 C3,17.4477153 3.44771525,17 4,17 Z M4,11 L20,11 C20.5522847,11 21,11.4477153 21,12 C21,12.5522847 20.5522847,13 20,13 L4,13 C3.44771525,13 3,12.5522847 3,12 C3,11.4477153 3.44771525,11 4,11 Z'/%3E%3C/svg%3E%0A");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' fill='var(--main-text-color)' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4,5 L20,5 C20.5522847,5 21,5.44771525 21,6 C21,6.55228475 20.5522847,7 20,7 L4,7 C3.44771525,7 3,6.55228475 3,6 C3,5.44771525 3.44771525,5 4,5 Z M4,17 L20,17 C20.5522847,17 21,17.4477153 21,18 C21,18.5522847 20.5522847,19 20,19 L4,19 C3.44771525,19 3,18.5522847 3,18 C3,17.4477153 3.44771525,17 4,17 Z M4,11 L20,11 C20.5522847,11 21,11.4477153 21,12 C21,12.5522847 20.5522847,13 20,13 L4,13 C3.44771525,13 3,12.5522847 3,12 C3,11.4477153 3.44771525,11 4,11 Z'/%3E%3C/svg%3E%0A");
+  max-height: 56px;
+  border: 2px solid var(--primary);
+  background-color: var(--main-color);
+  border-radius: 40px;
+  font-weight:inherit;
+  color: var(--main-text-color);
+}
+
+.header_btn::before {
+  content: url(../../vendor/images/icon_nav_point.svg);
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  margin-bottom: -6px;
 }
 
 .header_btn:hover {
   background-color: var(--sec-color);
+}
+
+@media (max-width: 1023px) {
+  .header {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .header_title {
+    padding: 12px 16px;
+  }
+
+  .header_btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 19px;
+    max-height: 44px;
+  }
+
+  .header_btn::before {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+}
+
+@media (max-width: 710px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header_title {
+    width: 100%;
+  }
+
+  .header_btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    font-size: 12px;
+  }
 }

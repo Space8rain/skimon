@@ -1,5 +1,12 @@
 :root {
-  --main-color: rgb(41, 45, 48);
-  --sec-color: rgb(60, 63, 78);
-  --main-text-color: rgb(234, 238, 255);
+  --main-color: rgb(0, 0, 0);
+  --second-color: rgb(31, 33, 35);
+  --primary: rgb(214, 254, 94);
+  --hover: rgb(177, 211, 72);
+  --main-text-color: rgb(255, 255, 255);
+  --alert: rgb(255, 64, 110);
 }
+
+@media (max-width: 1023px) {}
+@media (max-width: 710px) {}
+@media (max-width: 400px) {}

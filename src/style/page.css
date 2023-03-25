@@ -1,10 +1,24 @@
 @import url(./const.css);
 
 .page {
+  box-sizing: border-box;
   margin: 0 auto;
-  max-width: 880px;
+  max-width: 1920px;
   min-height: 100vh;
+  padding: 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 1023px) {
+  .page {
+    padding: 20px 40px;
+  }
+}
+
+@media (max-width: 391px) {
+  .page {
+    padding: 20px;
+  }
 }
