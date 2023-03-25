@@ -7,5 +7,7 @@
 /* Cards */
 @import url(./style/cards.css);
 
+@import url(./style/card.css);
+
 /* Footer */
 @import url(./style/footer/footer.css);
