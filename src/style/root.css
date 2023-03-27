@@ -1,7 +1,7 @@
 @import url(./const.css);
 
 .root {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   font-family: 'Inter', 'Arial', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
