@@ -3,7 +3,6 @@ import './Card.css';
 import patchImgPath from '../images/patch_card_image.jpg'
 
 function Card ({resort}) {
-  console.log(resort);
   return (
     <article className="card">
       {resort.status && <p class="card_status card_status_open">Открыто</p>}
