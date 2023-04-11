@@ -1,6 +1,6 @@
 import React from "react";
 import './Card.css';
-import patchImgPath from '../images/patch_card_image.jpg'
+import patchImgPath from '../images/patch_card_image.svg'
 
 function Card ({resort}) {
   return (
