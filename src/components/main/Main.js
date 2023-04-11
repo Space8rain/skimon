@@ -2,14 +2,13 @@ import React from 'react';
 import './Main.css';
 import Card from '../card/Card';
 
-function Main () {
+function Main ({resorts}) {
   return (
     <main>
       <section className="cards">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {resorts.map((resort) => (
+          <Card key={resort.id} resort={resort} />
+        ))}
       </section>
     </main>
   )
