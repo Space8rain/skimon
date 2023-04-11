@@ -1,0 +1,15 @@
+.cards {
+  max-width: 100%;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  justify-content: space-around;
+  gap: 40px;
+}
+
+@media (max-width: 769px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill,minmax(328px, 360px));
+    gap: 32px;
+  }
+}

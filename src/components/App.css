@@ -1,0 +1,30 @@
+:root {
+  --main-color: rgb(0, 0, 0);
+  --second-color: rgb(31, 33, 35);
+  --primary: rgb(214, 254, 94);
+  --hover: rgb(177, 211, 72);
+  --main-text-color: rgb(255, 255, 255);
+  --alert: rgb(255, 64, 110);
+}
+
+#root {
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  background-color: var(--main-color);
+}
+
+.App {
+  box-sizing: content-box;
+  margin: 0 auto;
+  max-width: 1920px;
+  width: calc(100% - 60px * 2);
+  height: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}

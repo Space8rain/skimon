@@ -1,14 +1,13 @@
-@import url(./vendor/normalize.css);
-@import url(./style/root.css);
-@import url(./style/page.css);
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Header */
-@import url(./style/header/header.css);
-
-/* Cards */
-@import url(./style/cards/cards.css);
-
-@import url(./style/cards/card.css);
-
-/* Footer */
-@import url(./style/footer/footer.css);
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
