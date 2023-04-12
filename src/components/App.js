@@ -1,10 +1,11 @@
-// import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import Header from './header/Header';
 import Main from './main/Main';
 import Footer from './footer/Footer';
 import api from '../utils/Api';
+import InfoPage from './InfoPage/InfoPage';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -17,9 +18,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Routes>
+        <Route path='/skimon' element={
+          <>
+            <Header />
+            <Main resorts={resorts}/>
+            <Footer />
+          </>} 
+        />
+        <Route path='/skimon/infoPage' element={<InfoPage />}/>
+      </Routes>
+      {/* <Header />
       <Main resorts={resorts}/>
       <Footer />
+      <InfoPage /> */}
     </div>
   );
 }

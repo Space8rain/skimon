@@ -5,7 +5,7 @@ import iconLogoPath from '../../images/icon_logo.svg';
 function Header() {
   return (
     <header className="header">
-      <a href="/" className="header_title">
+      <a href="/skimon" className="header_title">
         <img src={iconLogoPath} alt="icon logo"/>
         Мониторинг горнолыжных курортов
       </a>
