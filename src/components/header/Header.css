@@ -2,14 +2,20 @@
 
 .header {
   font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 16px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: end;
   justify-content: space-between;
+}
+
+.header > a > img {
+  width: 20px;
+  height: 20px;
+  padding-right: 8px;
 }
 
 .header_title {
@@ -28,24 +34,23 @@
 .header_btn {
   display: flex;
   justify-content: center;
-  box-sizing: padding-box;
+  box-sizing: content-box;
   align-items: center;
   padding: 16px 20px;
   cursor: pointer;
-  max-height: 56px;
-  border: 2px solid var(--primary);
+  outline: 2px solid var(--primary);
   background-color: var(--main-color);
   border-radius: 40px;
-  font-weight:inherit;
+  font: inherit;
   color: var(--main-text-color);
 }
 
 .header_btn::before {
-  content: url(../images/icon_nav_point.svg);
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-  margin-bottom: -6px;
+  content: url(../../images/icon_nav_point.svg);
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  margin-bottom: -2px;
 }
 
 .header_btn:hover {

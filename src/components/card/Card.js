@@ -1,15 +1,21 @@
 import React from "react";
 import './Card.css';
-import patchImgPath from '../images/patch_card_image.svg'
+import patchImgPath from '../../images/patch_card_image.svg'
+import iconArrowRightPath from '../../images/icon_arrow_right.svg'
 
 function Card ({resort}) {
   return (
     <article className="card">
-      {resort.status && <p class="card_status card_status_open">Открыто</p>}
+      <p className={`card_status ${resort.status ? 'card_status_open' : 'card_status_close'}`}>
+        {resort.status ? "Открыто" : "Закрыто"}
+      </p>
       {resort.webcams && <div className="cam_icon"></div>}
       <img className="card_image" src={resort.image_url ?? patchImgPath} alt="" />
       <div className="card_banner">
-        <h2 className="card_title">{resort.name ?? '...'}</h2>
+        <div className="card_title">
+          <h2 className="card_title_text">{resort.name ?? '...'}</h2>
+          <img className="card_title_button" src={iconArrowRightPath} alt="icon arrow right"/>
+        </div>
         <hr />
         <div className="card_info">
           <div className="card_info_stroke">
