@@ -1,15 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Main.css';
 import Card from '../card/Card';
 
 function Main ({resorts}) {
   return (
     <main>
-      <section className="cards">
+      <ul className="cards">
         {resorts.map((resort) => (
-          <Card key={resort.id} resort={resort} />
+          <li key={resort.id}>
+            <Link to={`${resort.id}`}>
+              <Card resort={resort}/>
+            </Link>
+          </li>
         ))}
-      </section>
+      </ul>
     </main>
   )
 };
