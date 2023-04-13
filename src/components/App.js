@@ -5,8 +5,8 @@ import Main from './main/Main';
 import Footer from './footer/Footer';
 import api from '../utils/Api';
 import InfoPage from './InfoPage/InfoPage';
-import { BrowserRouter } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import PageNotFound from './pageNotFound/PageNotFound';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -22,14 +22,36 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/skimon' element={
+
+          <Route exact path='/skimon/' element={
             <>
               <Header />
               <Main resorts={resorts}/>
               <Footer />
             </>
           }/>
-          <Route path='/skimon/:id' element={<InfoPage resorts={resorts}/>}/>
+
+          <Route path='/skimon/:id' element={
+            <>
+            <InfoPage resorts={resorts}/>
+            <Footer />
+            </>
+          }/>
+
+          <Route path='*' element={
+            <>
+              <PageNotFound />
+              <Footer />
+            </>
+          }/>
+
+          <Route path='skimon/not-found' element={
+            <>
+              <PageNotFound />
+              <Footer />
+            </>
+          }/>
+
         </Routes>
       </BrowserRouter>
     </div>
