@@ -18,7 +18,7 @@
   padding-right: 8px;
 }
 
-.header_title {
+.btn_header_title {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -30,30 +30,28 @@
   padding: 16px 20px;
 }
 
-
-.header_btn {
+.btn_header {
   display: flex;
   justify-content: center;
   box-sizing: content-box;
   align-items: center;
   padding: 16px 20px;
   cursor: pointer;
-  outline: 2px solid var(--primary);
+  border: 2px solid var(--primary);
   background-color: var(--main-color);
   border-radius: 40px;
   font: inherit;
   color: var(--main-text-color);
 }
 
-.header_btn::before {
-  content: url(../../images/icon_nav_point.svg);
+.btn_header svg {
   width: 20px;
   height: 20px;
   margin-right: 8px;
   margin-bottom: -2px;
 }
 
-.header_btn:hover {
+.btn_header:hover {
   background-color: var(--sec-color);
 }
 
@@ -67,14 +65,14 @@
     padding: 12px 16px;
   }
 
-  .header_btn {
+  .btn_header {
     padding: 12px 16px;
     font-size: 14px;
     line-height: 19px;
     max-height: 44px;
   }
 
-  .header_btn::before {
+  .btn_header::before {
     width: 20px;
     height: 20px;
     margin-right: 4px;
@@ -92,7 +90,7 @@
     width: 100%;
   }
 
-  .header_btn {
+  .btn_header {
     width: 100%;
   }
 }

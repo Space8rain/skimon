@@ -1,0 +1,32 @@
+@import url(../root/root.css);
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  cursor: pointer;
+}
+
+.accordion_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.accordion_body {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.accordion_body img {
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+  /* width: 100%;
+  max-width: 420px; */
+  height: 230px;
+}

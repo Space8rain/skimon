@@ -6,7 +6,7 @@ import Footer from './footer/Footer';
 import api from '../utils/Api';
 import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Sw } from 'react-router-dom';
 
 function App() {
 
@@ -39,13 +39,6 @@ function App() {
           }/>
 
           <Route path='*' element={
-            <>
-              <PageNotFound />
-              <Footer />
-            </>
-          }/>
-
-          <Route path='skimon/not-found' element={
             <>
               <PageNotFound />
               <Footer />

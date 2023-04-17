@@ -9,11 +9,17 @@
   --alert: rgb(255, 64, 110);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 html, body, body>div {
   min-height: 100vh;
 }
 
-.root {
+#root {
   /* overflow-x: hidden; */
   font-family: 'Inter', 'Arial', 'sans-serif';
   -webkit-font-smoothing: antialiased;

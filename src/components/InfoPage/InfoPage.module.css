@@ -1,0 +1,67 @@
+@import url(../root/root.css);
+
+hr {
+  width: 100%;
+  margin: 0 0 40px 0;
+}
+
+.infoPage {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--main-text-color);
+  width: 100%;
+}
+
+.infoPage header {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.btn_back {
+  color: var(--primary);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: max-content;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.btn_back:hover {
+  color: var(--hover);
+}
+
+.header_title {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+}
+
+.header_title .links {
+  display: flex;
+  gap: 20px;
+}
+
+.btn_link {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
+  width: max-content;
+  padding: 16px 20px;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  background-color: var(--main-color);
+  border-radius: 40px;
+  font: inherit;
+  color: var(--main-text-color);
+}
+
+.btn_primary {
+  background-color: var(--primary);
+  color: var(--main-color);
+}

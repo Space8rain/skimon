@@ -7,7 +7,7 @@ function Main ({resorts}) {
   return (
     <main>
       <ul className="cards">
-        {resorts.map((resort) => (
+        {resorts && resorts.map((resort) => (
           <li key={resort.id}>
             <Link to={`${resort.id}`}>
               <Card resort={resort}/>
