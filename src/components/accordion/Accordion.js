@@ -2,7 +2,27 @@ import React from "react";
 import classes from './Accordion.module.css';
 import patchPath from '../../images/patch_card_image.svg'
 
-function Accordion({props}) {
+function Accordion({title, type, props}) {
+
+  function changeRender(type, data) {
+    if (type === 'webcams') {
+      return (
+        data.live_streams.map((stream) => (
+          <li key={stream.webcam_id}>
+            {stream.type === 'code' 
+            ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
+            : <iframe src={stream.data} title="webcams"/>
+          }
+          </li>
+        ))
+      )
+    }
+    //  else if (type === 'schedule') {
+    //   return (
+
+    //   )
+    // }
+  }
 
   const [isActive, setIsActive] = React.useState(false)
 
@@ -15,7 +35,7 @@ function Accordion({props}) {
     <>
       {props.webcams &&
         <div className={classes.accordion}>
-        <h2 className={classes.accordion_title} onClick={handleItem}>Онлайн трансляция
+        <h2 className={classes.accordion_title} onClick={handleItem}>{title}
           {isActive 
           ? <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 13.172L16.95 8.22205L18.364 9.63605L12 16L5.636 9.63605L7.05 8.22205L12 13.172Z" fill="currentColor"/>
@@ -26,9 +46,7 @@ function Accordion({props}) {
           </svg>}
         </h2>
         {isActive && <div className={classes.accordion_body}>
-          <img src={patchPath} alt=""/>
-          <img src={patchPath} alt=""/>
-          <img src={patchPath} alt=""/>
+          {changeRender(type, props)}
         </div>}
         <hr />
       </div>}

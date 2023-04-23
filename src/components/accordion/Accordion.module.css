@@ -22,11 +22,12 @@
   overflow: hidden;
 }
 
-.accordion_body img {
-  display: block;
+.accordion_body li {
+  border: 3px solid var(--primary);
   border-radius: 20px;
-  object-fit: cover;
-  /* width: 100%;
-  max-width: 420px; */
-  height: 230px;
+  overflow: hidden;
+}
+
+.accordion_body iframe {
+  border: none;
 }
