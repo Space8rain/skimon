@@ -6,6 +6,7 @@ hr {
 }
 
 .infoPage {
+  position: relative;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -64,4 +65,16 @@ hr {
 .btn_primary {
   background-color: var(--primary);
   color: var(--main-color);
+}
+
+.map {
+  opacity: 1;
+  position: absolute;
+  width: 440px;
+  height: 350px;
+  top: 150px;
+  right: 0;
+  border: 2px solid var(--primary);
+  border-radius: 5%;
+  overflow: hidden;
 }

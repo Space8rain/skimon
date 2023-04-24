@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { YMaps, Map, Placemark, RoutePanel } from '@pbe/react-yandex-maps';
 import classes from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
+import Footer from "../footer/Footer";
 
 function InfoPage({resorts}) {
+
+  const [isOpenMap, setIsOpenMap] = useState(false);
+
+  function switchMap() {
+    setIsOpenMap(!isOpenMap)
+  }
 
   let { id } = useParams();
   const resort = resorts.find(el => el.id === +id)
@@ -19,27 +27,42 @@ function InfoPage({resorts}) {
           </svg>
             Назад
         </Link>
+
         <div className={classes.header_title}>
           <h1>{resort.name}</h1>
           <div className={classes.links}>
-            <a target="blank" href={resort.url}>
-              <p className={classes.btn_link}>Официальный сайт</p>
-            </a>
-            <a target="blank" href={''}>
-              <p className={`${classes.btn_link} ${classes.btn_primary}`}>Проложить маршрут</p>
-            </a>
-            
+            <a className={classes.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
+            <button onClick={switchMap} className={`${classes.btn_link} ${classes.btn_primary}`}>Проложить маршрут</button>
           </div>
+          
         </div>
-
         </header>
         <hr />
-
         <main>
           {resort.live_streams.length !== 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
           {resort.working_hours.length !== 0 && <Accordion props={resort} type='schedule' title='Режим работы'/>}
         </main>
-
+        <Footer />
+        { isOpenMap &&
+          <YMaps>
+            <Map className={classes.map} defaultState={{
+              center: [resort.lat, resort.lon],
+              zoom: 8,
+              controls: ["zoomControl"],
+              }}
+              modules={["control.ZoomControl", "control.FullscreenControl"]}>
+              <Placemark defaultGeometry={[resort.lat, resort.lon]} />
+              <RoutePanel
+                options={{ float: "right", maxWidth: "100"}}
+                state={{
+                  to: [resort.lat, resort.lon],
+                  toEnable: true,
+                  type: 'auto'
+                }}
+                />
+            </Map>
+          </YMaps>
+        }
       </div>
       ) 
     : null

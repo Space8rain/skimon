@@ -4,6 +4,12 @@ import patchPath from '../../images/patch_card_image.svg'
 
 function Accordion({title, type, props}) {
 
+  const [isActive, setIsActive] = React.useState(false)
+
+  function handleItem() {
+    setIsActive(!isActive)
+  }
+
   function changeRender(type, data) {
     if (type === 'webcams') {
       return (
@@ -41,12 +47,6 @@ function Accordion({title, type, props}) {
         </div>
       )
     }
-  }
-
-  const [isActive, setIsActive] = React.useState(false)
-
-  function handleItem() {
-    setIsActive(!isActive)
   }
 
   return (

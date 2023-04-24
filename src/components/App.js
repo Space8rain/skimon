@@ -34,7 +34,7 @@ function App() {
           <Route path='/skimon/:id' element={
             <>
             <InfoPage resorts={resorts}/>
-            <Footer />
+            {/* <Footer /> */}
             </>
           }/>
 
