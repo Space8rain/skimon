@@ -8,7 +8,7 @@ function Accordion({title, type, props}) {
     if (type === 'webcams') {
       return (
         data.live_streams.map((stream) => (
-          <li key={stream.webcam_id}>
+          <li className={classes.webcam} key={stream.webcam_id}>
             {stream.type === 'code' 
             ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
             : <iframe src={stream.data} title="webcams"/>
@@ -17,11 +17,30 @@ function Accordion({title, type, props}) {
         ))
       )
     }
-    //  else if (type === 'schedule') {
-    //   return (
+      else if (type === 'schedule') {
+      return (
+        <div>
+          <p className={`${classes.status} ${data.status ? classes.open : classes.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
+          {data.working_hours.map((day) => (
+            <li className={classes.day} key={day.day_of_week}>
+              <div className={classes.day_title}>{
+              day.day_of_week === '1' ? 'Понедельник' :
+              day.day_of_week === '2' ? 'Вторник' :
+              day.day_of_week === '3' ? 'Среда' :
+              day.day_of_week === '4' ? 'Четверг' :
+              day.day_of_week === '5' ? 'Пятница' :
+              day.day_of_week === '6' ? 'Суббота' :
+              day.day_of_week === '7' ? 'Воскресенье' : ''
+              }</div>
 
-    //   )
-    // }
+              <div>
+                <p>{day.open_time} - {day.close_time}</p>
+              </div>
+            </li>
+          ))}
+        </div>
+      )
+    }
   }
 
   const [isActive, setIsActive] = React.useState(false)

@@ -22,7 +22,7 @@
   overflow: hidden;
 }
 
-.accordion_body li {
+.webcam {
   border: 3px solid var(--primary);
   border-radius: 20px;
   overflow: hidden;
@@ -30,4 +30,40 @@
 
 .accordion_body iframe {
   border: none;
+}
+
+.status {
+  width: max-content;
+  padding: 8px 16px;
+  background-color: var(--main-color);
+  border: 2px solid;
+  border-radius: 40px;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 36px;
+}
+
+.open {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.close {
+  border-color: var(--alert);
+  color: var(--alert);
+}
+
+.day {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.day_title {
+  width: max-content;
+  min-width: 200px;
 }

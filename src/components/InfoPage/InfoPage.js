@@ -36,8 +36,8 @@ function InfoPage({resorts}) {
         <hr />
 
         <main>
-          {resort.live_streams && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
-          {resort.working_hours && <Accordion props={resort} type='schedule' title='Режим работы'/>}
+          {resort.live_streams.length !== 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
+          {resort.working_hours.length !== 0 && <Accordion props={resort} type='schedule' title='Режим работы'/>}
         </main>
 
       </div>
