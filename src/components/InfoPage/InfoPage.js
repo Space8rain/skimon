@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark, RoutePanel } from '@pbe/react-yandex-maps';
 import classes from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
@@ -11,10 +11,11 @@ function InfoPage({resorts}) {
 
   function switchMap() {
     setIsOpenMap(!isOpenMap)
-  }
+  };
 
   let { id } = useParams();
-  const resort = resorts.find(el => el.id === +id)
+
+  const resort = resorts.find(el => el.id === +id);
 
   return resort
     ? (
@@ -22,6 +23,7 @@ function InfoPage({resorts}) {
         <header>
 
         <Link className={classes.btn_back} to={"/skimon"}>
+          {/* Стрелка влево */}
           <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
           </svg>
@@ -32,7 +34,7 @@ function InfoPage({resorts}) {
           <h1>{resort.name}</h1>
           <div className={classes.links}>
             <a className={classes.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
-            <button onClick={switchMap} className={`${classes.btn_link} ${classes.btn_primary}`}>Проложить маршрут</button>
+            <button onClick={switchMap} className={`${classes.btn_link} ${classes.btn_primary}`}>Показать на карте</button>
           </div>
           
         </div>
@@ -52,20 +54,12 @@ function InfoPage({resorts}) {
               }}
               modules={["control.ZoomControl", "control.FullscreenControl"]}>
               <Placemark defaultGeometry={[resort.lat, resort.lon]} />
-              <RoutePanel
-                options={{ float: "right", maxWidth: "100"}}
-                state={{
-                  to: [resort.lat, resort.lon],
-                  toEnable: true,
-                  type: 'auto'
-                }}
-                />
             </Map>
           </YMaps>
         }
       </div>
-      ) 
-    : null
+      )
+      : <Navigate replace to='/404'/>
 }
 
 export default InfoPage

@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import './PageNotFound.css'
+import classes from './PageNotFound.module.css'
 
 function PageNotFound() {
   return (
     <>
-      <div className="page404">404</div>
-      <Link to={'/skimon'}>На гланую</Link>
+      <div className={classes.page404}>
+      <p>Страница не найдена</p>
+      <Link to={'/skimon'} replace>&#10095; На гланую &#10094;</Link>
+      </div>
+      
     </>
   )
 }

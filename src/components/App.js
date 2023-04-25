@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.css';
-import Header from './header/Header';
 import Main from './main/Main';
-import Footer from './footer/Footer';
 import api from '../utils/Api';
 import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
-import { BrowserRouter, Route, Routes, Sw } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -20,33 +18,15 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
         <Routes>
+          <Route exact path='/skimon/' element={<Main resorts={resorts}/>}/>
 
-          <Route exact path='/skimon/' element={
-            <>
-              <Header />
-              <Main resorts={resorts}/>
-              <Footer />
-            </>
-          }/>
+          <Route path='/skimon/:id' element={<InfoPage resorts={resorts}/>}/>
 
-          <Route path='/skimon/:id' element={
-            <>
-            <InfoPage resorts={resorts}/>
-            {/* <Footer /> */}
-            </>
-          }/>
+          <Route path='/404' element={<PageNotFound />}/>
 
-          <Route path='*' element={
-            <>
-              <PageNotFound />
-              <Footer />
-            </>
-          }/>
-
+          <Route path='*' element={<Navigate replace to='/404' />}/>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }
