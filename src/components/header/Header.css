@@ -34,6 +34,8 @@
   display: flex;
   justify-content: center;
   box-sizing: content-box;
+  min-width: 340px;
+  min-height: 20px;
   align-items: center;
   padding: 16px 20px;
   cursor: pointer;
@@ -55,13 +57,13 @@
   background-color: var(--sec-color);
 }
 
-@media (max-width: 1023px) {
+/* @media (max-width: 1023px) {
   .header {
     font-size: 14px;
     line-height: 19px;
   }
 
-  .header_title {
+  .btn_header_title {
     padding: 12px 16px;
   }
 
@@ -86,12 +88,12 @@
     gap: 12px;
   }
 
-  .header_title {
-    width: 100%;
+  .btn_header_title {
+    width: max-content;
   }
 
   .btn_header {
-    width: 100%;
+    width: max-content;
   }
 }
 
@@ -99,4 +101,4 @@
   .header {
     font-size: 12px;
   }
-}
+} */

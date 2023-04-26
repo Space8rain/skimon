@@ -16,8 +16,16 @@
   list-style: none;
 }
 
-html, body, body>div {
-  min-height: 100vh;
+header {
+  padding-top: 40px;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  padding-bottom: 40px;
 }
 
 #root {
@@ -28,4 +36,5 @@ html, body, body>div {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   background-color: var(--main-color);
+  min-height: 100vh;
 }

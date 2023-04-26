@@ -4,17 +4,16 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import classes from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
 import Footer from "../footer/Footer";
+import PageNotFound from "../pageNotFound/PageNotFound";
 
-function InfoPage({resorts}) {
+function InfoPage({resorts, ...props}) {
 
   const [isOpenMap, setIsOpenMap] = useState(false);
-
   function switchMap() {
     setIsOpenMap(!isOpenMap)
   };
 
   let { id } = useParams();
-
   const resort = resorts.find(el => el.id === +id);
 
   return resort
@@ -41,11 +40,10 @@ function InfoPage({resorts}) {
         </header>
         <hr />
         <main>
-          {resort.live_streams.length !== 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
+          {resort.live_streams.length > 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
 
           <Accordion props={resort} type='schedule' title='Режим работы'/>
         </main>
-        <Footer />
         { isOpenMap &&
           <YMaps>
             <Map className={classes.map} defaultState={{
@@ -58,11 +56,11 @@ function InfoPage({resorts}) {
             </Map>
           </YMaps>
         }
-      </div>
-      )
+        <Footer />
 
-    : <Navigate replace to='/404'/>
+        
+      </div>
+      ) : ''
 }
 
 export default InfoPage
-{/* <Navigate replace to='/404'/> */}

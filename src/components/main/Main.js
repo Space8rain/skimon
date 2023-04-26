@@ -5,10 +5,15 @@ import Footer from '../footer/Footer';
 import './Main.css';
 import Card from '../card/Card';
 
-function Main ({resorts}) {
+function Main ({clusters, resorts, currentCluster, onClick}) {
+
   return (
     <>
-      <Header />
+      <Header
+        onClick={onClick}
+        currentCluster={currentCluster}
+        clusters={clusters
+        } />
       <main>
         <ul className="cards">
           {resorts && resorts.map((resort) => (

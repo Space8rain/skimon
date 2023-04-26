@@ -26,7 +26,7 @@ function Accordion({title, type, props}) {
 
     if (type === 'schedule') {
       return (
-        <div>
+        <div className={classes.accordion_item}>
           <p className={`${classes.status} ${data.status ? classes.open : classes.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
           {data.working_hours.map((day) => (
             <li className={classes.day} key={day.day_of_week}>
@@ -38,11 +38,10 @@ function Accordion({title, type, props}) {
               day.day_of_week === '5' ? 'Пятница' :
               day.day_of_week === '6' ? 'Суббота' :
               day.day_of_week === '7' ? 'Воскресенье' : ''
-              }</div>
-
-              <div>
-                <p>{day.open_time} - {day.close_time}</p>
+              }
+              <p className={classes.hours}>{day.open_time} - {day.close_time}</p>
               </div>
+              
             </li>
           ))}
         </div>
