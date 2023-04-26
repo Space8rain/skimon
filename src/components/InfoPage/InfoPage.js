@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { YMaps, Map, Placemark, RoutePanel } from '@pbe/react-yandex-maps';
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import classes from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
 import Footer from "../footer/Footer";
@@ -42,7 +42,8 @@ function InfoPage({resorts}) {
         <hr />
         <main>
           {resort.live_streams.length !== 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
-          {resort.working_hours.length !== 0 && <Accordion props={resort} type='schedule' title='Режим работы'/>}
+
+          <Accordion props={resort} type='schedule' title='Режим работы'/>
         </main>
         <Footer />
         { isOpenMap &&
@@ -59,7 +60,9 @@ function InfoPage({resorts}) {
         }
       </div>
       )
-      : <Navigate replace to='/404'/>
+
+    : <Navigate replace to='/404'/>
 }
 
 export default InfoPage
+{/* <Navigate replace to='/404'/> */}

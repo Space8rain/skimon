@@ -1,6 +1,5 @@
 import React from "react";
 import classes from './Accordion.module.css';
-import patchPath from '../../images/patch_card_image.svg'
 
 function Accordion({title, type, props}) {
 
@@ -11,6 +10,7 @@ function Accordion({title, type, props}) {
   }
 
   function changeRender(type, data) {
+
     if (type === 'webcams') {
       return (
         data.live_streams.map((stream) => (
@@ -23,7 +23,8 @@ function Accordion({title, type, props}) {
         ))
       )
     }
-      else if (type === 'schedule') {
+
+    if (type === 'schedule') {
       return (
         <div>
           <p className={`${classes.status} ${data.status ? classes.open : classes.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
@@ -52,8 +53,7 @@ function Accordion({title, type, props}) {
   return (
 
     <>
-      {props.webcams &&
-        <div className={classes.accordion}>
+      {<div className={classes.accordion}>
         <h2 className={classes.accordion_title} onClick={handleItem}>{title}
           {isActive 
           ? <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,9 +64,11 @@ function Accordion({title, type, props}) {
           <path d="M13.1719 12L8.22192 7.04999L9.63592 5.63599L15.9999 12L9.63592 18.364L8.22192 16.95L13.1719 12Z" fill="currentColor"/>
           </svg>}
         </h2>
-        {isActive && <div className={classes.accordion_body}>
-          {changeRender(type, props)}
-        </div>}
+        {isActive && 
+          <div className={classes.accordion_body}>
+            {changeRender(type, props)}
+          </div>
+        }
         <hr />
       </div>}
       </>
