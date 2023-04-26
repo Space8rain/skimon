@@ -13,14 +13,22 @@ function Header({clusters, currentCluster, onClick}) {
           Мониторинг горнолыжных курортов
         </a>
         {
-        <Dropdown className="btn_header" title={currentCluster}> 
+        <Dropdown className="btn_header" title={currentCluster.name || clusters[0].cluster_name}> 
           {clusters.map((cluster) => (
-            <Dropdown.Item key={cluster.cluster_id} onClick={onClick} id={cluster.cluster_id}>
+            <Dropdown.Item
+              title={cluster.cluster_name}
+              key={cluster.cluster_id}
+              onClick={onClick}
+              id={cluster.cluster_id}>
+
               {cluster.cluster_name}
               {cluster.regions && 
               <Dropdown.Submenu>
                 {cluster.regions.map((region) => (
-                  <Dropdown.Item key={region.region_id} id={region.region_id}>
+                  <Dropdown.Item
+                    title={region.region_name}
+                    key={region.region_id}
+                    id={region.region_id}>
                     {region.region_name}
                   </Dropdown.Item>
               ))}

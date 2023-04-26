@@ -14,21 +14,26 @@ function App() {
       .then((res) => {setClusters(res.data)})
   }, [])
 
-  const [currentCluster, setCurrentCluster] = React.useState('Выбрать регион');
+  const [currentCluster, setCurrentCluster] = React.useState({
+    id: '',
+    name: ''
+  });
 
   function handleClusterChange(e) {
-    console.dir(e.target)
-    setCurrentCluster(e.target.textContent)
+    
+    setCurrentCluster({
+      id: e.target.id,
+      name: e.target.title
+    })
+    console.dir(e.target.title)
   }
 
   const [resorts, setResorts] = React.useState([]);
 
   React.useEffect(() => {
-    api.getResorts(1)
+    api.getResorts(currentCluster.id)
       .then((res) => {setResorts(res.data)})
-  }, [])
-
-
+  }, [currentCluster])
 
 
   return (
