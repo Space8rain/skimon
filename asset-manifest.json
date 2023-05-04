@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/skimon/static/css/main.31f581e9.css",
+    "main.css": "/skimon/static/css/main.0251e6ba.css",
     "main.js": "/skimon/static/js/main.90a93370.js",
     "static/js/787.507da28a.chunk.js": "/skimon/static/js/787.507da28a.chunk.js",
     "static/media/patch_card_image.svg": "/skimon/static/media/patch_card_image.bf3fc98b7d9bbfb5ebead78e1b98488d.svg",
@@ -8,12 +8,12 @@
     "static/media/icon_logo.svg": "/skimon/static/media/icon_logo.287aa40e581e8c8b5ed47896833aa330.svg",
     "index.html": "/skimon/index.html",
     "static/media/icon_arrow_right.svg": "/skimon/static/media/icon_arrow_right.230d9f735ca9e76840adb60cc72dfe99.svg",
-    "main.31f581e9.css.map": "/skimon/static/css/main.31f581e9.css.map",
+    "main.0251e6ba.css.map": "/skimon/static/css/main.0251e6ba.css.map",
     "main.90a93370.js.map": "/skimon/static/js/main.90a93370.js.map",
     "787.507da28a.chunk.js.map": "/skimon/static/js/787.507da28a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31f581e9.css",
+    "static/css/main.0251e6ba.css",
     "static/js/main.90a93370.js"
   ]
 }
