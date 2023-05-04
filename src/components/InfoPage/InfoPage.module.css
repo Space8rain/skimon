@@ -78,3 +78,22 @@ hr {
   border-radius: 5%;
   overflow: hidden;
 }
+
+@media (max-width: 1023px) {
+  hr {
+    margin: 0 0 32px 0;
+  }
+  .infoPage header {
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .header_title {
+    flex-direction: column;
+    gap: 20px;
+
+  }
+}
+
+@media (max-width: 767px) {
+
+}

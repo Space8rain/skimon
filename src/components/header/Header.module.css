@@ -51,14 +51,19 @@
   margin-bottom: -2px;
 }
 
-.btn_header:hover {
-  background-color: var(--sec-color);
+.header_title:hover {
+  background-color: var(--hover);
 }
 
 .dropdown_menu {
   width: 100%;
   border-radius: 15px !important;
   background-color: var(--primary) !important;
+}
+
+.dropdown_menu ul {
+  margin: 0 !important;
+  padding: 12px;
 }
 
 .dropdown_item {
@@ -98,7 +103,7 @@
   }
 }
 
-@media (max-width: 710px) {
+@media (max-width: 770px) {
   .header {
     flex-direction: column;
     align-items: center;
@@ -110,7 +115,7 @@
   }
 
   .btn_dropdown {
-    width: 320px;
+    width: 100%;
   }
 }
 
