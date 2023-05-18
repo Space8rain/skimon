@@ -1,8 +1,6 @@
 import React from "react";
-import classes from './Header.module.css';
+import styles from './Header.module.css';
 import Dropdown from "react-multilevel-dropdown";
-import EasterEgg from "../easterEgg/EasterEgg";
-
 
 function Header({clusters, currentCluster, onClick}) {
 
@@ -17,16 +15,15 @@ function Header({clusters, currentCluster, onClick}) {
 
   try {
     return (
-      <header className={classes.header}>
-        <a href="/skimon" className={classes.header_title}>
+      <header className={styles.header}>
+        <a href="/skimon" className={styles.header_title}>
           {iconLogo} Мониторинг горнолыжных курортов
-          <EasterEgg />
         </a>
 
         {
         <Dropdown
-        className={classes.btn_dropdown} 
-        menuClassName={classes.dropdown_menu}
+        className={styles.btn_dropdown} 
+        menuClassName={styles.dropdown_menu}
         title={
           [iconNavPoint, currentCluster.name || clusters[0].cluster_name]
         }>
@@ -34,7 +31,7 @@ function Header({clusters, currentCluster, onClick}) {
             <Dropdown.Item
               title={cluster.cluster_name}
               key={cluster.cluster_id}
-              className={classes.dropdown_item}
+              className={styles.dropdown_item}
               id={cluster.cluster_id}
             >
 
@@ -42,12 +39,12 @@ function Header({clusters, currentCluster, onClick}) {
 
               {cluster.regions && 
               <Dropdown.Submenu
-              className={classes.dropdown_submenu}
+              className={styles.dropdown_submenu}
               >
                 {cluster.regions.map((region) => (
                   <Dropdown.Item
                     title={region.region_name}
-                    className={classes.dropdown_item}
+                    className={styles.dropdown_item}
                     onClick={onClick}
                     key={region.region_id}
                     id={region.region_id}>

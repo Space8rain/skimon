@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './Accordion.module.css';
+import styles from './Accordion.module.css';
 
 function Accordion({title, type, props}) {
 
@@ -14,7 +14,7 @@ function Accordion({title, type, props}) {
     if (type === 'webcams') {
       return (
         data.live_streams.map((stream) => (
-          <li className={classes.webcam} key={stream.webcam_id}>
+          <li className={styles.webcam} key={stream.webcam_id}>
             {stream.type === 'code' 
             ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
             : <iframe src={stream.data} title="webcams"/>
@@ -26,11 +26,11 @@ function Accordion({title, type, props}) {
 
     if (type === 'schedule') {
       return (
-        <div className={classes.accordion_item}>
-          <p className={`${classes.status} ${data.status ? classes.open : classes.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
+        <div className={styles.accordion_item}>
+          <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
           {data.working_hours.map((day) => (
-            <li className={classes.day} key={day.day_of_week}>
-              <div className={classes.day_title}>{
+            <li className={styles.day} key={day.day_of_week}>
+              <div className={styles.day_title}>{
               day.day_of_week === '1' ? 'Понедельник' :
               day.day_of_week === '2' ? 'Вторник' :
               day.day_of_week === '3' ? 'Среда' :
@@ -39,7 +39,7 @@ function Accordion({title, type, props}) {
               day.day_of_week === '6' ? 'Суббота' :
               day.day_of_week === '7' ? 'Воскресенье' : ''
               }
-              <p className={classes.hours}>{day.open_time} - {day.close_time}</p>
+              <p className={styles.hours}>{day.open_time} - {day.close_time}</p>
               </div>
               
             </li>
@@ -52,8 +52,8 @@ function Accordion({title, type, props}) {
   return (
 
     <>
-      {<div className={classes.accordion}>
-        <h2 className={classes.accordion_title} onClick={handleItem}>{title}
+      {<div className={styles.accordion}>
+        <h2 className={styles.accordion_title} onClick={handleItem}>{title}
           {isActive 
           ? <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 13.172L16.95 8.22205L18.364 9.63605L12 16L5.636 9.63605L7.05 8.22205L12 13.172Z" fill="currentColor"/>
@@ -64,7 +64,7 @@ function Accordion({title, type, props}) {
           </svg>}
         </h2>
         {isActive && 
-          <div className={classes.accordion_body}>
+          <div className={styles.accordion_body}>
             {changeRender(type, props)}
           </div>
         }
