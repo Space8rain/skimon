@@ -12,8 +12,7 @@ function Main ({clusters, resorts, currentCluster, onClick}) {
       <Header
         onClick={onClick}
         currentCluster={currentCluster}
-        clusters={clusters
-        } />
+        clusters={clusters} />
       <main>
         <ul className="cards">
           {resorts && resorts.map((resort) => (

@@ -51,13 +51,16 @@ function App() {
                 onClick={handleClusterChange}
                 currentCluster={currentCluster}
                 clusters={clusters}
-                resorts={resorts}/>,
+                resorts={resorts}/>
               <EasterEgg />
             </>
             }/>
 
           <Route path='/skimon/:id' element={
-            <InfoPage resorts={resorts}/>
+            <>
+              <InfoPage resorts={resorts}/>
+              <EasterEgg />
+            </>
           }/>
 
           <Route path='/404' element={<PageNotFound />}/>
