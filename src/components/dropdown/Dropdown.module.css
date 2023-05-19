@@ -59,7 +59,8 @@
     
   }
   .dropdown_menu {
-    width: max-content;
+    max-width: max-content !important;
+    min-width: 50% !important;
   }
 
   .dropdown_item {
