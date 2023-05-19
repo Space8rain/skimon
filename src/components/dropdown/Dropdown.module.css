@@ -53,10 +53,17 @@
   }
 }
 
-@media (max-width: 770px) {
-
+@media (max-width: 769px) {
   .btn_dropdown {
-    width: 100%;
+    width: 360px;
+    
+  }
+  .dropdown_menu {
+    width: max-content;
+  }
+
+  .dropdown_item {
+    font-size: 12px;
   }
 }
 

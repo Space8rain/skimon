@@ -9,8 +9,8 @@ function Dropdown_btn({clusters, currentCluster, onClick}) {
   try {
     return (
       <Dropdown
-        menuClassName={styles.dropdown_menu}
         className={styles.btn_dropdown}
+        menuClassName={styles.dropdown_menu}
         title={[iconNavPoint, currentCluster.name || clusters[0].cluster_name]}
       >
         {clusters.map((cluster) => (
