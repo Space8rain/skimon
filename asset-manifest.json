@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/skimon/static/css/main.8cae3560.css",
+    "main.css": "/skimon/static/css/main.b9f6feb4.css",
     "main.js": "/skimon/static/js/main.6caa012a.js",
     "static/js/787.507da28a.chunk.js": "/skimon/static/js/787.507da28a.chunk.js",
     "static/media/raccoon.png": "/skimon/static/media/raccoon.4a312b84c2e187caac0a.png",
@@ -8,12 +8,12 @@
     "static/media/icon_camera.svg": "/skimon/static/media/icon_camera.bec25c5f2ee5bc0e7179.svg",
     "index.html": "/skimon/index.html",
     "static/media/icon_arrow_right.svg": "/skimon/static/media/icon_arrow_right.230d9f735ca9e76840adb60cc72dfe99.svg",
-    "main.8cae3560.css.map": "/skimon/static/css/main.8cae3560.css.map",
+    "main.b9f6feb4.css.map": "/skimon/static/css/main.b9f6feb4.css.map",
     "main.6caa012a.js.map": "/skimon/static/js/main.6caa012a.js.map",
     "787.507da28a.chunk.js.map": "/skimon/static/js/787.507da28a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8cae3560.css",
+    "static/css/main.b9f6feb4.css",
     "static/js/main.6caa012a.js"
   ]
 }
