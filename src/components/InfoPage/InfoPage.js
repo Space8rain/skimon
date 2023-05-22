@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
@@ -9,9 +9,28 @@ import PageNotFound from "../pageNotFound/PageNotFound";
 function InfoPage({resorts, ...props}) {
 
   const [isOpenMap, setIsOpenMap] = useState(false);
-  function switchMap() {
+
+  function handlerMap() {
     setIsOpenMap(!isOpenMap)
   };
+
+  function closeMap(evt) {
+    if (!evt.target.className.includes('map')) {
+      setIsOpenMap(false)
+    }
+    if (evt.key === 'Escape') {
+      setIsOpenMap(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', closeMap);
+    document.addEventListener('keydown', closeMap);
+    return () => {
+      document.removeEventListener('click', closeMap);
+      document.removeEventListener('keydown', closeMap);
+    }
+  })
 
   let { id } = useParams();
   const resort = resorts.find(el => el.id === +id);
@@ -33,7 +52,7 @@ function InfoPage({resorts, ...props}) {
           <h1>{resort.name}</h1>
           <div className={styles.links}>
             <a className={styles.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
-            <button onClick={switchMap} className={`${styles.btn_link} ${styles.btn_primary}`}>Показать на карте</button>
+            <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
           </div>
           
         </div>

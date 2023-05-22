@@ -11,7 +11,7 @@ function App() {
 
 // Получаем от сервера доступные регионы
   const [clusters, setClusters] = React.useState([]);
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     api.getRegions()
       .then((res) => {setClusters(res.data)})
   }, [])
@@ -33,7 +33,7 @@ function App() {
   }
 
 // Получаем от сервера список курортов в активном регионе
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     api.getResorts(currentCluster.id)
       .then((res) => {setResorts(res.data)})
   }, [currentCluster])
