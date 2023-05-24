@@ -5,9 +5,9 @@
   left: 0;
   transform: rotate(90deg);
   z-index: 99;
-  transition: left .3s ease;
+  transition: left .8s ease;
 }
 
 .hideRaccoon {
-  left: -7rem;
+  left: -10rem;
 }

@@ -83,7 +83,7 @@
 .day_title {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  justify-items: left;
   align-items: end;
   min-width: 200px;
 }
@@ -91,6 +91,7 @@
 .hours {
   text-align: left;
   width: 150px;
+  margin-right: 30vw;
 }
 
 @media (max-width: 1023px) {

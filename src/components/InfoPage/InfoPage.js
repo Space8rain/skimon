@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
@@ -11,11 +11,12 @@ function InfoPage({resorts, ...props}) {
   const [isOpenMap, setIsOpenMap] = useState(false);
 
   function handlerMap() {
-    setIsOpenMap(!isOpenMap)
+    setIsOpenMap(true)
   };
 
+// Функция закрытия карты по условию клика по оверлею или нажатия esc
   function closeMap(evt) {
-    if (!evt.target.className.includes('map')) {
+    if (evt.target.className.includes('overlay')) {
       setIsOpenMap(false)
     }
     if (evt.key === 'Escape') {
@@ -23,15 +24,16 @@ function InfoPage({resorts, ...props}) {
     }
   }
 
-  useEffect(() => {
-    document.addEventListener('click', closeMap);
+  useLayoutEffect(() => {
+    // document.addEventListener('click', closeMap);
     document.addEventListener('keydown', closeMap);
     return () => {
-      document.removeEventListener('click', closeMap);
+      // document.removeEventListener('click', closeMap);
       document.removeEventListener('keydown', closeMap);
     }
   })
 
+// Получаем ид переданный в адрессной строке
   let { id } = useParams();
   const resort = resorts.find(el => el.id === +id);
 
@@ -64,16 +66,19 @@ function InfoPage({resorts, ...props}) {
           <Accordion props={resort} type='schedule' title='Режим работы'/>
         </main>
         { isOpenMap &&
-          <YMaps>
-            <Map className={styles.map} defaultState={{
-              center: [resort.lat, resort.lon],
-              zoom: 8,
-              controls: ["zoomControl"],
-              }}
-              modules={["control.ZoomControl", "control.FullscreenControl"]}>
-              <Placemark defaultGeometry={[resort.lat, resort.lon]} />
-            </Map>
-          </YMaps>
+
+          <div onClick={closeMap} className={styles.overlay}>
+            <YMaps>
+              <Map className={styles.map} defaultState={{
+                center: [resort.lat, resort.lon],
+                zoom: 8,
+                controls: ["zoomControl"],
+                }}
+                modules={["control.ZoomControl", "control.FullscreenControl"]}>
+                <Placemark defaultGeometry={[resort.lat, resort.lon]} />
+              </Map>
+            </YMaps>
+          </div>
         }
         <Footer />
 

@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useLayoutEffect} from "react";
 import imgPath from '../../images/raccoon.png';
 import styles from './EasterEgg.module.css'
 
@@ -12,7 +12,7 @@ function EasterEgg() {
   }
 
 //Через хук вешаем слушатели, как зависимость указываем стейт активности
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.addEventListener('click', resetInactiveTimer);
     document.addEventListener('mousemove', resetInactiveTimer);
     document.addEventListener('keydown', resetInactiveTimer);  
@@ -20,7 +20,7 @@ function EasterEgg() {
 // Ставим таймер на 30сек, по истчечению меняем стайт активности
     const timer = setTimeout(() => {
       setActive(false);
-    }, 1000 * 60);
+    }, 1000 * 180);
 
 // Удаляем слушатели и таймаут
     return () => {
