@@ -9,12 +9,23 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
 
+// Стейт устройства
+  const [device, setDevice] = React.useState('desktop');
+
+// Изначально проверяем тип устройства
+  React.useLayoutEffect(() => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i
+    .test(navigator.userAgent)) {
+      setDevice('mobile');
+    };
+  }, [])
+
 // Получаем от сервера доступные регионы
   const [clusters, setClusters] = React.useState([]);
   React.useLayoutEffect(() => {
     api.getRegions()
       .then((res) => {setClusters(res.data)})
-  }, [])
+  }, [clusters])
 
 // Стейт с активным регионом
   const [currentCluster, setCurrentCluster] = React.useState({
@@ -58,7 +69,7 @@ function App() {
 
           <Route path='/skimon/:id' element={
             <>
-              <InfoPage resorts={resorts}/>
+              <InfoPage resorts={resorts} device={device}/>
               <EasterEgg />
             </>
           }/>

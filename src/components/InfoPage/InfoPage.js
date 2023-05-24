@@ -6,7 +6,7 @@ import Accordion from "../accordion/Accordion";
 import Footer from "../footer/Footer";
 import PageNotFound from "../pageNotFound/PageNotFound";
 
-function InfoPage({resorts, ...props}) {
+function InfoPage({resorts, device, ...props}) {
 
   const [isOpenMap, setIsOpenMap] = useState(false);
 
@@ -26,12 +26,13 @@ function InfoPage({resorts, ...props}) {
 
   useLayoutEffect(() => {
     // document.addEventListener('click', closeMap);
+    console.log(device);
     document.addEventListener('keydown', closeMap);
     return () => {
       // document.removeEventListener('click', closeMap);
       document.removeEventListener('keydown', closeMap);
     }
-  })
+  }, [])
 
 // Получаем ид переданный в адрессной строке
   let { id } = useParams();
@@ -54,7 +55,15 @@ function InfoPage({resorts, ...props}) {
           <h1>{resort.name}</h1>
           <div className={styles.links}>
             <a className={styles.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
-            <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
+            {device === 'desktop'
+              ? <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
+              : <button className={`${styles.btn_link} ${styles.btn_primary} map`}>
+                  <a href={`https://yandex.ru/maps/?pt=${resort.lon},${resort.lat}&z=18&l=map`} target="blank">
+                    Маршрут в Яндекс.Навигатор
+                  </a>
+                </button>
+            }
+            
           </div>
           
         </div>
