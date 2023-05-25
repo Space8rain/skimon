@@ -58,3 +58,23 @@
   background-color: var(--hover);
   border: none;
 }
+
+@media (max-width: 769px) {
+  .footer {
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 20px;
+  }
+
+  .footer_icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer {
+    font-size: 8px;
+    line-height: 10px;
+  }
+}

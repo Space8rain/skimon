@@ -50,6 +50,8 @@
   .header {
     flex-direction: column;
     align-items: center;
+    font-size: 12px;
+    line-height: 14px;
     gap: 12px;
   }
 
@@ -59,8 +61,8 @@
   }
 }
 
-@media (max-width: 450px) {
+/* @media (max-width: 450px) {
   .header {
-    font-size: 12px;
+
   }
-}
+} */

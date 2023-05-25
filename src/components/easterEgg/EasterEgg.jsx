@@ -15,6 +15,7 @@ function EasterEgg() {
   useLayoutEffect(() => {
     document.addEventListener('click', resetInactiveTimer);
     document.addEventListener('mousemove', resetInactiveTimer);
+    document.addEventListener('scroll', resetInactiveTimer);
     document.addEventListener('keydown', resetInactiveTimer);  
 
 // Ставим таймер на 30сек, по истчечению меняем стайт активности
@@ -26,6 +27,7 @@ function EasterEgg() {
     return () => {
       document.removeEventListener('click', resetInactiveTimer);
       document.removeEventListener('mousemove', resetInactiveTimer);
+      document.addEventListener('scroll', resetInactiveTimer);
       document.removeEventListener('keydown', resetInactiveTimer);
       clearTimeout(timer)};
   }, [isActive]);

@@ -70,7 +70,9 @@ function InfoPage({resorts, device, ...props}) {
         </header>
         <hr />
         <main>
-          {resort.live_streams.length > 0 && <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>}
+          {resort.live_streams.length > 0 &&
+            <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>
+          }
 
           <Accordion props={resort} type='schedule' title='Режим работы'/>
         </main>

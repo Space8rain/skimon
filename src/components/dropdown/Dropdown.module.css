@@ -17,6 +17,8 @@
 .btn_dropdown svg {
   margin-right: 8px; 
   margin-bottom: -2px;
+  width: 20px;
+  height: 20px;
 }
 
 .dropdown_menu {
@@ -56,8 +58,15 @@
 @media (max-width: 769px) {
   .btn_dropdown {
     width: 360px;
-    
+    font-size: 12px;
+    line-height: 14px;
   }
+
+  .btn_dropdown svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .dropdown_menu {
     max-width: max-content !important;
     min-width: 50% !important;
@@ -71,6 +80,7 @@
 @media (max-width: 450px) {
 
   .btn_dropdown {
+    width: 335px;
     font-size: 12px;
   }
 }

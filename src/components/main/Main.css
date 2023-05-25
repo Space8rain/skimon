@@ -16,3 +16,9 @@
     gap: 32px;
   }
 }
+
+@media (max-width: 426px) {
+  .cards {
+    gap: 24px;
+  }
+}
