@@ -25,11 +25,8 @@ function InfoPage({resorts, device, ...props}) {
   }
 
   useLayoutEffect(() => {
-    // document.addEventListener('click', closeMap);
-    console.log(device);
     document.addEventListener('keydown', closeMap);
     return () => {
-      // document.removeEventListener('click', closeMap);
       document.removeEventListener('keydown', closeMap);
     }
   }, [])
@@ -70,11 +67,14 @@ function InfoPage({resorts, device, ...props}) {
         </header>
         <hr />
         <main>
-          {resort.live_streams.length > 0 &&
+          {resort.webcams &&
             <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>
           }
 
           <Accordion props={resort} type='schedule' title='Режим работы'/>
+          {/*resort.weather &&
+            <Accordion props={resort} type='weather' title='Погода'/> */
+          }
         </main>
         { isOpenMap &&
 

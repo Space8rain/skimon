@@ -26,7 +26,7 @@ function Accordion({title, type, props}) {
 
     if (type === 'schedule') {
       return (
-        <div className={styles.accordion_item}>
+        <ul className={styles.accordion_item}>
           <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
           {data.working_hours.map((day) => (
             <li className={styles.day} key={day.day_of_week}>
@@ -44,9 +44,33 @@ function Accordion({title, type, props}) {
               
             </li>
           ))}
-        </div>
+        </ul>
       )
     }
+
+    // if (type === 'weather') {
+    //   return (
+    //     <ul className={styles.accordion_item}>
+    //       <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
+    //       {data.working_hours.map((day) => (
+    //         <li className={styles.day} key={day.day_of_week}>
+    //           <div className={styles.day_title}>{
+    //           day.day_of_week === '1' ? 'Понедельник' :
+    //           day.day_of_week === '2' ? 'Вторник' :
+    //           day.day_of_week === '3' ? 'Среда' :
+    //           day.day_of_week === '4' ? 'Четверг' :
+    //           day.day_of_week === '5' ? 'Пятница' :
+    //           day.day_of_week === '6' ? 'Суббота' :
+    //           day.day_of_week === '7' ? 'Воскресенье' : ''
+    //           }
+    //           <p className={styles.hours}>{day.open_time} - {day.close_time}</p>
+    //           </div>
+              
+    //         </li>
+    //       ))}
+    //     </ul>
+    //   )
+    // }
   }
 
   return (
