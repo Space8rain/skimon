@@ -1,0 +1,41 @@
+@import url(../root/root.css);
+
+.btn_scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 10%;
+  bottom: 48px;
+  height: 48px;
+  width: 48px;
+  background: none;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  color: var(--main-text-color);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+@media (max-width: 2560px) {
+  .btn_scroll {
+    right: 5%;
+  }
+}
+
+@media (max-width: 2270px) {
+  .btn_scroll {
+    right: 5px;
+  }
+}
+
+@media (max-width: 769px) {
+  .btn_scroll {
+    right: 20px;
+  }
+}

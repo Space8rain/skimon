@@ -5,6 +5,7 @@ import api from '../utils/Api';
 import EasterEgg from './easterEgg/EasterEgg';
 import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
+import ScrollButton from './scrollButton/ScrollButton';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
                 currentCluster={currentCluster}
                 clusters={clusters}
                 resorts={resorts}/>
+              <ScrollButton />
               <EasterEgg />
             </>
             }/>
@@ -70,6 +72,7 @@ function App() {
           <Route path='/skimon/:id' element={
             <>
               <InfoPage resorts={resorts} device={device}/>
+              <ScrollButton />
               <EasterEgg />
             </>
           }/>
