@@ -78,6 +78,12 @@
   padding: 20px;
 }
 
+.card_title {
+  min-height: 48px;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 769px) {
   .card_banner {
     padding: 16px;
