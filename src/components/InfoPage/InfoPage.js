@@ -39,33 +39,33 @@ function InfoPage({resorts, device, ...props}) {
     ? (
       <div className={styles.infoPage}>
         <header>
+          <Link className={styles.btn_back} to={"/skimon"}>
+            {/* Стрелка влево */}
+            <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
+            </svg>
+              Назад
+          </Link>
 
-        <Link className={styles.btn_back} to={"/skimon"}>
-          {/* Стрелка влево */}
-          <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
-          </svg>
-            Назад
-        </Link>
-
-        <div className={styles.header_title}>
-          <h1>{resort.name}</h1>
-          <div className={styles.links}>
-            <a className={styles.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
-            {device === 'desktop'
-              ? <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
-              : <button className={`${styles.btn_link} ${styles.btn_primary} map`}>
-                  <a href={`https://yandex.ru/maps/?pt=${resort.lon},${resort.lat}&z=18&l=map`} target="blank">
-                    Маршрут в Яндекс.Навигатор
-                  </a>
-                </button>
-            }
-            
+          <div className={styles.header_title}>
+            <h1>{resort.name}</h1>
+            <div className={styles.links}>
+              <a className={styles.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
+              {device === 'desktop'
+                ? <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
+                : <button className={`${styles.btn_link} ${styles.btn_primary} map`}>
+                    <a href={`https://yandex.ru/maps/?pt=${resort.lon},${resort.lat}&z=18&l=map`} target="blank">
+                      Маршрут в Яндекс.Навигатор
+                    </a>
+                  </button>
+              }
+              
+            </div>
           </div>
-          
-        </div>
         </header>
+
         <hr />
+
         <main>
           {resort.webcams &&
             <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>
@@ -77,7 +77,6 @@ function InfoPage({resorts, device, ...props}) {
           }
         </main>
         { isOpenMap &&
-
           <div onClick={closeMap} className={styles.overlay}>
             <YMaps>
               <Map className={styles.map} defaultState={{
