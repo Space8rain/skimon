@@ -7,6 +7,7 @@ import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
 import ScrollButton from './scrollButton/ScrollButton';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import Skeleton from './skeleton/Skeleton';
 
 function App() {
 
@@ -21,11 +22,16 @@ function App() {
     };
   }, [])
 
+  const [isLoading, setIsLoading] = React.useState(true);
+
 // Получаем от сервера доступные регионы
   const [clusters, setClusters] = React.useState([]);
   React.useLayoutEffect(() => {
     api.getRegions()
-      .then((res) => {setClusters(res.data)})
+      .then((res) => {
+        setClusters(res.data);
+
+      })
   }, [clusters])
 
 // Стейт с активным регионом
@@ -47,7 +53,10 @@ function App() {
 // Получаем от сервера список курортов в активном регионе
   React.useLayoutEffect(() => {
     api.getResorts(currentCluster.id)
-      .then((res) => {setResorts(res.data)})
+      .then((res) => {
+        setResorts(res.data);
+        setIsLoading(false);
+      })
   }, [currentCluster])
 
 // Стейт с доступными курортами
@@ -63,7 +72,8 @@ function App() {
                 onClick={handleClusterChange}
                 currentCluster={currentCluster}
                 clusters={clusters}
-                resorts={resorts}/>
+                resorts={resorts}
+                isLoading={isLoading}/>
               <ScrollButton />
               <EasterEgg />
             </>
@@ -71,7 +81,7 @@ function App() {
 
           <Route path='/skimon/:id' element={
             <>
-              <InfoPage resorts={resorts} device={device}/>
+              <InfoPage resorts={resorts} device={device} isLoading={isLoading}/>
               <ScrollButton />
               <EasterEgg />
             </>
