@@ -32,7 +32,7 @@ function App() {
         setClusters(res.data);
 
       })
-  }, [clusters])
+  }, [])
 
 // Стейт с активным регионом
   const [currentCluster, setCurrentCluster] = React.useState({
