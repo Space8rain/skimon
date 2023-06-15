@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/skimon/static/css/main.9f28b686.css",
-    "main.js": "/skimon/static/js/main.08955cc5.js",
+    "main.js": "/skimon/static/js/main.fd21bee6.js",
     "static/js/787.507da28a.chunk.js": "/skimon/static/js/787.507da28a.chunk.js",
     "static/media/raccoon.png": "/skimon/static/media/raccoon.4a312b84c2e187caac0a.png",
     "static/media/patch_card_image.svg": "/skimon/static/media/patch_card_image.bf3fc98b7d9bbfb5ebead78e1b98488d.svg",
@@ -9,11 +9,11 @@
     "index.html": "/skimon/index.html",
     "static/media/icon_arrow_right.svg": "/skimon/static/media/icon_arrow_right.230d9f735ca9e76840adb60cc72dfe99.svg",
     "main.9f28b686.css.map": "/skimon/static/css/main.9f28b686.css.map",
-    "main.08955cc5.js.map": "/skimon/static/js/main.08955cc5.js.map",
+    "main.fd21bee6.js.map": "/skimon/static/js/main.fd21bee6.js.map",
     "787.507da28a.chunk.js.map": "/skimon/static/js/787.507da28a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9f28b686.css",
-    "static/js/main.08955cc5.js"
+    "static/js/main.fd21bee6.js"
   ]
 }
