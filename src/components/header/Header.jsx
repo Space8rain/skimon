@@ -11,7 +11,7 @@ function Header({clusters, currentCluster, onClick}) {
 
   return (
     <header className={styles.header}>
-      <a href="/skimon" className={styles.header_title}>
+      <a href="/" className={styles.header_title}>
         {iconLogo} Мониторинг горнолыжных курортов
       </a>
 
