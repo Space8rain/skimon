@@ -40,7 +40,7 @@ function InfoPage({resorts, device, isLoading, ...props}) {
     ? (
       <div className={styles.infoPage}>
         <header>
-          <Link className={styles.btn_back} to={"/skimon"}>
+          <Link className={styles.btn_back} to={"#"}>
             {/* Стрелка влево */}
             <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
@@ -58,7 +58,7 @@ function InfoPage({resorts, device, isLoading, ...props}) {
       ) : (
         <div className={styles.infoPage}>
         <header>
-          <Link className={styles.btn_back} to={"/skimon"}>
+          <Link className={styles.btn_back} to={"/"}>
             {/* Стрелка влево */}
             <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
@@ -67,9 +67,9 @@ function InfoPage({resorts, device, isLoading, ...props}) {
           </Link>
 
           <div className={styles.header_title}>
-            <h1>{resort.name}</h1>
+            <h1>{resort?.name}</h1>
             <div className={styles.links}>
-              <a className={styles.btn_link} target="blank" href={resort.url}>Официальный сайт</a>
+              <a className={styles.btn_link} target="blank" href={resort?.url}>Официальный сайт</a>
               {device === 'desktop'
                 ? <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
                 : <button className={`${styles.btn_link} ${styles.btn_primary} map`}>
@@ -86,7 +86,7 @@ function InfoPage({resorts, device, isLoading, ...props}) {
         <hr />
 
         <main>
-          {resort.webcams &&
+          {resort?.webcams &&
             <Accordion props={resort} type='webcams' title='Онлайн трансляция'/>
           }
 

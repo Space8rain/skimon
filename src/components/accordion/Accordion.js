@@ -13,7 +13,7 @@ function Accordion({title, type, props}) {
 
     if (type === 'webcams') {
       return (
-        data.live_streams.map((stream) => (
+        data?.live_streams.map((stream) => (
           <li className={styles.webcam} key={stream.webcam_id}>
             {stream.type === 'code' 
             ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
@@ -28,7 +28,7 @@ function Accordion({title, type, props}) {
       return (
         <ul className={styles.accordion_item}>
           <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
-          {data.working_hours.map((day) => (
+          {data?.working_hours.map((day) => (
             <li className={styles.day} key={day.day_of_week}>
               <div className={styles.day_title}>{
                 day.day_of_week === '1' ? 'Понедельник' :

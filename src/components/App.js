@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route exact path='/skimon/'
+          <Route exact path='/'
             element={
             <>
               <Main
@@ -79,7 +79,7 @@ function App() {
             </>
             }/>
 
-          <Route path='/skimon/:id' element={
+          <Route path='/:id' element={
             <>
               <InfoPage resorts={resorts} device={device} isLoading={isLoading}/>
               <ScrollButton />
@@ -88,7 +88,7 @@ function App() {
           }/>
 
           <Route path='/404' element={<PageNotFound />}/>
-          <Route path='*' element={<Navigate replace to='/404' />}/>
+          <Route path='/*' element={<Navigate replace to='/404' />}/>
         </Routes>
     </div>
   );
