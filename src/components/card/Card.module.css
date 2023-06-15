@@ -78,9 +78,16 @@
   padding: 20px;
 }
 
+.card_title {
+  min-height: 48px;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 769px) {
   .card_banner {
-    min-height: 184px;
+    padding: 16px;
+    gap: 16px;
   }
 }
 
@@ -92,15 +99,19 @@
 .card_title {
   display: flex;
   justify-content: space-between;
-  height: 58px;
 }
 
 .card_title_text {
   padding: 0;
   margin: 0;
   font-weight: 900;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.card_title_button {
+  width: 24px;
+  height: 24px;
 }
 
 .card_info {
@@ -108,8 +119,8 @@
   flex-direction: column;
   width: 100%;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 16px;
   gap: 12px;
 }
 

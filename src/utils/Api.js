@@ -4,6 +4,7 @@ class Api {
     this._headers = options.headers
   }
 
+// Проверка промиса
   _checkResponse = (res) => {
     if (res.ok) {
       return res.json()
@@ -11,6 +12,7 @@ class Api {
   return Promise.reject(`Ошибка: ${res.status} ${res.error.message}`)
   }
 
+// Запрос регионов
   getRegions() {
     return fetch (`${this._url}regions`, {
       headers: this._headers
@@ -18,21 +20,17 @@ class Api {
     .then(this._checkResponse)
   }
 
+// Запрос курортов
   getResorts(id) {
     return fetch (`${this._url}resorts/${id}`, {
       headers: this._headers
     })
     .then(this._checkResponse)
   }
-
-  getApiInfo() {
-    return Promise.all[this.getRegions(), this.getResorts()]
-  }
 }
 
-
 const api = new Api({
-  url: 'https://enot.dev/skimon/api/1/'
+  url: 'https://skimon.enot.dev/api/1/'
 })
 
 export default api

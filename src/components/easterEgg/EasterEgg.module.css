@@ -1,0 +1,13 @@
+.imageRaccoon {
+  position: fixed;
+  width: 6rem;
+  top: 160px;
+  left: 0;
+  transform: rotate(90deg);
+  z-index: 99;
+  transition: left .8s ease;
+}
+
+.hideRaccoon {
+  left: -10rem;
+}
