@@ -1,7 +1,7 @@
 {
   "name": "skimon",
   "version": "0.1.0",
-  "homepage": "https://space8rain.github.io/skimon",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.4",
@@ -24,7 +24,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": ".",
   "eslintConfig": {
     "extends": [
       "react-app",

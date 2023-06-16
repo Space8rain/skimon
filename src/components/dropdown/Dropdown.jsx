@@ -1,5 +1,6 @@
 import Dropdown from "react-multilevel-dropdown";
 import styles from './Dropdown.module.css'
+import { Link } from "react-router-dom";
 
 function Dropdown_btn({clusters, currentCluster, onClick}) {
   const iconNavPoint = <svg key={'svg'} viewBox="0 0 16 19" fill="none">
@@ -25,15 +26,17 @@ function Dropdown_btn({clusters, currentCluster, onClick}) {
             {cluster.regions && (
               <Dropdown.Submenu className={styles.dropdown_submenu}>
                 {cluster.regions.map((region) => (
-                  <Dropdown.Item
-                    title={region.region_name}
-                    className={styles.dropdown_item}
-                    onClick={onClick}
-                    key={region.region_id}
-                    id={region.region_id}
-                  >
-                    {region.region_name}
-                  </Dropdown.Item>
+                  <Link key={region.region_id} to={`/${region.region_alias}`}>
+                    <Dropdown.Item
+                      title={region.region_name}
+                      className={styles.dropdown_item}
+                      onClick={onClick}
+                      id={region.region_id}
+                      alias={region.region_alias}
+                    >
+                      {region.region_name}
+                    </Dropdown.Item>
+                  </Link>
                 ))}
               </Dropdown.Submenu>
             )}
