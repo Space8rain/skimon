@@ -13,8 +13,8 @@ class Api {
   }
 
 // Запрос регионов
-  getRegions() {
-    return fetch (`${this._url}regions`, {
+  getClusters() {
+    return fetch (`${this._url}clusters`, {
       headers: this._headers
     })
     .then(this._checkResponse)

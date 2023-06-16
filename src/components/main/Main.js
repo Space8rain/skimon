@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import './Main.css';
@@ -24,9 +24,10 @@ function Main ({clusters, resorts, currentCluster, onClick, isLoading}) {
               <Skeleton />
             </>
           ) : (
-            resorts.map((resort) => (
+            resorts
+              .map((resort) => (
               <li key={resort.id}>
-                <Link to={`${resort.id}`}>
+                <Link to={`${resort.alias}`}>
                   <Card resort={resort}/>
                 </Link>
               </li>

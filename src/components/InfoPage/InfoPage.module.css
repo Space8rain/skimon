@@ -30,11 +30,14 @@ hr {
   color: var(--primary);
   display: flex;
   gap: 16px;
+  background: transparent;
+  border: none;
   align-items: center;
   width: max-content;
   font-weight: 900;
   font-size: 20px;
   line-height: 1.25em;
+  cursor: pointer;
 }
 
 .btn_back:hover {

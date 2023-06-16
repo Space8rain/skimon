@@ -1,5 +1,5 @@
 import { useEffect, useState, useLayoutEffect } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
@@ -7,9 +7,10 @@ import Footer from "../footer/Footer";
 import PageNotFound from "../pageNotFound/PageNotFound";
 import Skeleton from "../skeleton/Skeleton";
 
-function InfoPage({resorts, device, isLoading, ...props}) {
+function InfoPage({resorts, device, isLoading, currentCluster, ...props}) {
 
   const [isOpenMap, setIsOpenMap] = useState(false);
+  const navigate = useNavigate();
 
   function handlerMap() {
     setIsOpenMap(true)
@@ -33,20 +34,20 @@ function InfoPage({resorts, device, isLoading, ...props}) {
   }, [])
 
 // Получаем ид переданный в адрессной строке
-  let { id } = useParams();
-  const resort = resorts.find(el => el.id === +id);
+  let { resort_alias } = useParams();
+  const resort = resorts.find(el => el.alias === resort_alias);
 
   return isLoading
     ? (
       <div className={styles.infoPage}>
         <header>
-          <Link className={styles.btn_back} to={"#"}>
+          <button className={styles.btn_back} onClick={() => navigate(-1)}>
             {/* Стрелка влево */}
             <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>
             </svg>
               Назад
-          </Link>
+          </button>
           <div className={styles.header_title}>
             <Skeleton />
           </div>
@@ -58,7 +59,7 @@ function InfoPage({resorts, device, isLoading, ...props}) {
       ) : (
         <div className={styles.infoPage}>
         <header>
-          <Link className={styles.btn_back} to={"/"}>
+          <Link className={styles.btn_back} to={`/${currentCluster.cluster_alias}`}>
             {/* Стрелка влево */}
             <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M7.82788 11L13.1919 5.63595L11.7779 4.22195L3.99988 12L11.7779 19.778L13.1919 18.364L7.82788 13L19.9999 13L19.9999 11L7.82788 11Z"/>

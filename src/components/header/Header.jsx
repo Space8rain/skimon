@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './Header.module.css';
 import Dropdown from "../dropdown/Dropdown";
+import { Link } from "react-router-dom";
 
 
 function Header({clusters, currentCluster, onClick}) {
@@ -11,9 +12,9 @@ function Header({clusters, currentCluster, onClick}) {
 
   return (
     <header className={styles.header}>
-      <a href="/" className={styles.header_title}>
+      <Link to={`/${currentCluster.cluster_alias}`} className={styles.header_title}>
         {iconLogo} Мониторинг горнолыжных курортов
-      </a>
+      </Link>
 
       <Dropdown 
       clusters={clusters}
