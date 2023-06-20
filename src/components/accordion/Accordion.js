@@ -11,66 +11,67 @@ function Accordion({title, type, props}) {
 
   function changeRender(type, data) {
 
-    if (type === 'webcams') {
-      return (
-        data?.live_streams.map((stream) => (
-          <li className={styles.webcam} key={stream.webcam_id}>
-            {stream.type === 'code' 
-            ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
-            : <iframe src={stream.data} title="webcams"/>
-          }
-          </li>
-        ))
-      )
-    }
-
-    if (type === 'schedule') {
-      return (
-        <ul className={styles.accordion_item}>
-          <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
-          {data?.working_hours.map((day) => (
-            <li className={styles.day} key={day.day_of_week}>
-              <div className={styles.day_title}>{
-                day.day_of_week === '1' ? 'Понедельник' :
-                day.day_of_week === '2' ? 'Вторник' :
-                day.day_of_week === '3' ? 'Среда' :
-                day.day_of_week === '4' ? 'Четверг' :
-                day.day_of_week === '5' ? 'Пятница' :
-                day.day_of_week === '6' ? 'Суббота' :
-                day.day_of_week === '7' ? 'Воскресенье' : ''
-                }
-                <p className={styles.hours}>{day.open_time} - {day.close_time}</p>
-              </div>
-              
+    switch (type) {
+      case 'webcams': 
+        return (
+          data?.live_streams.map((stream) => (
+            <li className={styles.webcam} key={stream.webcam_id}>
+              {stream.type === 'code' 
+              ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
+              : <iframe src={stream.data} title="webcams"/>
+            }
             </li>
-          ))}
-        </ul>
-      )
-    }
+          ))
+        );
 
-    // if (type === 'weather') {
-    //   return (
-    //     <ul className={styles.accordion_item}>
-    //       <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
-    //       {data.working_hours.map((day) => (
-    //         <li className={styles.day} key={day.day_of_week}>
-    //           <div className={styles.day_title}>{
-    //           day.day_of_week === '1' ? 'Понедельник' :
-    //           day.day_of_week === '2' ? 'Вторник' :
-    //           day.day_of_week === '3' ? 'Среда' :
-    //           day.day_of_week === '4' ? 'Четверг' :
-    //           day.day_of_week === '5' ? 'Пятница' :
-    //           day.day_of_week === '6' ? 'Суббота' :
-    //           day.day_of_week === '7' ? 'Воскресенье' : ''
-    //           }
-    //           <p className={styles.hours}>{day.open_time} - {day.close_time}</p>
-    //           </div>
-              
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   )
-    // }
+      case 'schedule':
+        return (
+          <ul className={styles.accordion_items}>
+            <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
+            {data?.working_hours.map((day) => (
+              <li className={`${styles.accordion_item} ${styles.schedule}`} key={day.day_of_week}>
+                <div className={styles.accordion_item_title}>{
+                  day.day_of_week === '1' ? 'Понедельник' :
+                  day.day_of_week === '2' ? 'Вторник' :
+                  day.day_of_week === '3' ? 'Среда' :
+                  day.day_of_week === '4' ? 'Четверг' :
+                  day.day_of_week === '5' ? 'Пятница' :
+                  day.day_of_week === '6' ? 'Суббота' :
+                  day.day_of_week === '7' ? 'Воскресенье' : ''
+                  }
+                  <p className={styles.accordion_item_value}>{day.open_time} - {day.close_time}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+
+        case 'prices':
+          return (
+            <ul className={styles.accordion_items}>
+              <li className={styles.accordion_item}>
+                <div className={styles.accordion_item_title}>
+                  Ски-пасс будни
+                  <p className={styles.accordion_item_value}>{data?.prices?.skipass_weekday} ₽</p>
+                </div>
+              </li>
+              <li className={styles.accordion_item}>
+                <div className={styles.accordion_item_title}>
+                  Ски-пасс выходные
+                  <p className={styles.accordion_item_value}>{data?.prices?.skipass_weekend} ₽</p>
+                </div>
+              </li>
+              <li className={styles.accordion_item}>
+                <div className={styles.accordion_item_title}>
+                  Инструктор
+                  <p className={styles.accordion_item_value}>{data?.prices?.instructor} ₽</p>
+                </div>
+              </li>
+            </ul>
+          )
+
+      default: return null
+    };
   }
 
   return (

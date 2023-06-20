@@ -8,6 +8,12 @@ import Skeleton from '../skeleton/Skeleton';
 
 function Main ({clusters, resorts, currentCluster, onClick, isLoading}) {
 
+  let { cluster_alias } = useParams();
+
+  React.useEffect(() => {
+    // console.log(cluster_alias);
+  }, [cluster_alias])
+
   return (
     <>
       <Header

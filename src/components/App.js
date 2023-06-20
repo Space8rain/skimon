@@ -6,7 +6,7 @@ import EasterEgg from './easterEgg/EasterEgg';
 import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
 import ScrollButton from './scrollButton/ScrollButton';
-import { Route, Routes, Navigate, } from 'react-router-dom';
+import { Route, Routes, Navigate, useParams } from 'react-router-dom';
 import Skeleton from './skeleton/Skeleton';
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
 
 // Выбираем активный кластер регионов
   function handleClusterChange(e) {
-    console.dir(currentCluster.cluster_alias)
+    // console.dir(currentCluster.cluster_alias)
     setCurrentCluster({
       id: e.target.id,
       name: e.target.title,
