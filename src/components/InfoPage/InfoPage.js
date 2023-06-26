@@ -1,10 +1,9 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
 import Accordion from "../accordion/Accordion";
 import Footer from "../footer/Footer";
-import PageNotFound from "../pageNotFound/PageNotFound";
 import Skeleton from "../skeleton/Skeleton";
 
 function InfoPage({resorts, device, isLoading, currentCluster, ...props}) {

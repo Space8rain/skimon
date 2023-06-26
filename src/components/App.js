@@ -6,8 +6,7 @@ import EasterEgg from './easterEgg/EasterEgg';
 import InfoPage from './InfoPage/InfoPage';
 import PageNotFound from './pageNotFound/PageNotFound';
 import ScrollButton from './scrollButton/ScrollButton';
-import { Route, Routes, Navigate, useParams } from 'react-router-dom';
-import Skeleton from './skeleton/Skeleton';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
 
@@ -35,49 +34,33 @@ function App() {
   }, [])
 
 // Стейт с активным кластером регионов
-  const [currentCluster, setCurrentCluster] = React.useState(
-    JSON.parse(window.localStorage.getItem('currentCluster')) 
-    ? {
-      id: JSON.parse(window.localStorage.getItem('currentCluster')).id,
-      name: JSON.parse(window.localStorage.getItem('currentCluster')).name,
-      cluster_alias: JSON.parse(window.localStorage.getItem('currentCluster')).cluster_alias
-    } : {
-    id: 1,
-    name: 'Московская область',
-    cluster_alias: 'msk'
-  });
+  const [currentCluster, setCurrentCluster] = React.useState({});
 
 // Выбираем активный кластер регионов
   function handleClusterChange(e) {
-    // console.dir(currentCluster.cluster_alias)
     setCurrentCluster({
       id: e.target.id,
       name: e.target.title,
       cluster_alias: e.target.attributes.alias.value
     })
-    window.localStorage.setItem('currentCluster', JSON.stringify(currentCluster))
-  }
-
-  React.useEffect(() => {
-    window.localStorage.setItem('currentCluster', JSON.stringify(currentCluster))
-  }, [currentCluster])
+  };
 
 // Стейт с доступными курортами в активном кластере регионов
-  const [resorts, setResorts] = React.useState([]);
+  const [resorts, setResorts] = React.useState();
 
 // Получаем от сервера список курортов в активном кластере регионов
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     api.getResorts(currentCluster.id)
       .then((res) => {
         setResorts(res.data);
         setIsLoading(false);
       })
-  }, [currentCluster])
+  }, [currentCluster]);
 
   return (
     <div className="App">
         <Routes>
-          <Route path={`/:cluster_alias`}
+          <Route path='/:cluster_alias'
             element={
             <>
               <Main
@@ -85,7 +68,9 @@ function App() {
                 currentCluster={currentCluster}
                 clusters={clusters}
                 resorts={resorts}
-                isLoading={isLoading}/>
+                isLoading={isLoading}
+                setCurrentCluster={setCurrentCluster}
+                />
               <ScrollButton />
               <EasterEgg />
             </>

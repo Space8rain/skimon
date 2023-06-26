@@ -6,13 +6,24 @@ import './Main.css';
 import Card from '../card/Card';
 import Skeleton from '../skeleton/Skeleton';
 
-function Main ({clusters, resorts, currentCluster, onClick, isLoading}) {
+function Main ({clusters, resorts, currentCluster, onClick, isLoading, setCurrentCluster}) {
 
   let { cluster_alias } = useParams();
 
   React.useEffect(() => {
-    // console.log(cluster_alias);
-  }, [cluster_alias])
+    // console.log(clusters);
+    const cluster = clusters.find((cluster) => {
+      return cluster.regions.find((region) => region.region_alias === cluster_alias)
+    });
+    const region = cluster?.regions?.find((region) => region.region_alias === cluster_alias);
+
+    region && setCurrentCluster({
+      id: region.region_id,
+      name: region.region_name,
+      cluster_alias: region.region_alias
+  });
+  // console.log(currentCluster);
+  }, [cluster_alias, clusters]);
 
   return (
     <>
