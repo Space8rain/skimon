@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
@@ -6,7 +6,7 @@ import Accordion from "../accordion/Accordion";
 import Footer from "../footer/Footer";
 import Skeleton from "../skeleton/Skeleton";
 
-function InfoPage({resorts, device, isLoading, currentCluster, ...props}) {
+function InfoPage({resorts, device, isLoading, currentCluster, clusters, setCurrentCluster, ...props}) {
 
   const [isOpenMap, setIsOpenMap] = useState(false);
   const navigate = useNavigate();
@@ -34,7 +34,23 @@ function InfoPage({resorts, device, isLoading, currentCluster, ...props}) {
 
 // Получаем ид переданный в адрессной строке
   let { resort_alias } = useParams();
-  const resort = resorts.find(el => el.alias === resort_alias);
+  const resort = resorts?.find(el => el.alias === resort_alias);
+
+
+  let { cluster_alias } = useParams();
+
+  useEffect(() => {
+    const cluster = clusters.find((cluster) => {
+      return cluster.regions.find((region) => region.region_alias === cluster_alias)
+    });
+    const region = cluster?.regions?.find((region) => region.region_alias === cluster_alias);
+
+    region && setCurrentCluster({
+      id: region.region_id,
+      name: region.region_name,
+      cluster_alias: region.region_alias
+  });
+  }, [cluster_alias, clusters]);
 
   return isLoading
     ? (
@@ -92,7 +108,7 @@ function InfoPage({resorts, device, isLoading, currentCluster, ...props}) {
 
           <Accordion props={resort} type='schedule' title='Режим работы'/>
 
-          {resort.prices &&
+          {resort?.prices &&
             <Accordion props={resort} type='prices' title='Цены'/>
           }
         </main>

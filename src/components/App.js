@@ -78,7 +78,13 @@ function App() {
 
           <Route path='/:cluster_alias/:resort_alias' element={
             <>
-              <InfoPage resorts={resorts} device={device} isLoading={isLoading} currentCluster={currentCluster}/>
+              <InfoPage
+                resorts={resorts}
+                clusters={clusters}
+                setCurrentCluster={setCurrentCluster}
+                device={device}
+                isLoading={isLoading}
+                currentCluster={currentCluster}/>
               <ScrollButton />
               <EasterEgg />
             </>
