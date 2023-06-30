@@ -52,19 +52,19 @@ function Accordion({title, type, props}) {
               <li className={styles.accordion_item}>
                 <div className={styles.accordion_item_title}>
                   Ски-пасс будни
-                  <p className={styles.accordion_item_value}>{data?.prices?.skipass_weekday} ₽</p>
+                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekday ?? '...'} ₽</p>
                 </div>
               </li>
               <li className={styles.accordion_item}>
                 <div className={styles.accordion_item_title}>
                   Ски-пасс выходные
-                  <p className={styles.accordion_item_value}>{data?.prices?.skipass_weekend} ₽</p>
+                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekend ?? '...'} ₽</p>
                 </div>
               </li>
               <li className={styles.accordion_item}>
                 <div className={styles.accordion_item_title}>
                   Инструктор
-                  <p className={styles.accordion_item_value}>{data?.prices?.instructor} ₽</p>
+                  <p className={styles.accordion_item_value}>от {data?.prices?.instructor ?? '...'} ₽</p>
                 </div>
               </li>
             </ul>

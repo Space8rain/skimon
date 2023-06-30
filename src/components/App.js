@@ -91,7 +91,7 @@ function App() {
           }/>
 
           <Route path='/404' element={<PageNotFound currentCluster={currentCluster}/>}/>
-          <Route path='/*' element={<Navigate replace to='/404' />}/>
+          <Route path='/*' element={<Navigate replace to='/msk' />}/>
         </Routes>
     </div>
   );

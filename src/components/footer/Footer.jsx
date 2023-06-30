@@ -2,10 +2,13 @@ import React from "react";
 import './Footer.css';
 
 function Footer() {
+
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="copyright">
-        <p>© 2023</p>
+        <p>© {year}</p>
         <p>Режимы работы склонов и цены на подъемники не являются публичной офертой.</p>
       </div>
       <ul className="footer_links">
