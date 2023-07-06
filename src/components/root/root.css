@@ -9,6 +9,20 @@
   --alert: rgb(255, 64, 110);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  cursor: grab !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--second-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 12px;
+}
+
 *, li {
   margin: 0;
   padding: 0;
