@@ -89,7 +89,7 @@ function InfoPage({resorts, device, isLoading, currentCluster, clusters, setCurr
               {device === 'desktop'
                 ? <button onClick={handlerMap} className={`${styles.btn_link} ${styles.btn_primary} map`}>Показать на карте</button>
                 : <button className={`${styles.btn_link} ${styles.btn_primary} map`}>
-                    <a href={`https://yandex.ru/maps/?pt=${resort.lon},${resort.lat}&z=18&l=map`} target="blank">
+                    <a href={`https://yandex.ru/maps/?pt=${resort?.lon},${resort?.lat}&z=18&l=map`} target="blank">
                       Маршрут в Яндекс.Навигатор
                     </a>
                   </button>
