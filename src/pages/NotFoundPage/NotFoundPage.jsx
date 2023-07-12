@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from './PageNotFound.module.css'
+import classes from './NotFoundPage.module.css'
 
 function PageNotFound({currentCluster}) {
 

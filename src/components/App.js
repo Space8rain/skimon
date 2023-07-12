@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
-import Main from './main/Main';
+import { MainPageAsync } from '../pages/mainPage/MainPage.async';
 import api from '../utils/Api';
 import EasterEgg from './easterEgg/EasterEgg';
-import InfoPage from './InfoPage/InfoPage';
-import PageNotFound from './pageNotFound/PageNotFound';
+import { InfoPageAsync } from '../pages/InfoPage/InfoPage.async';
+import { NotFoundPageAsync } from '../pages/NotFoundPage/NotFoundPage.async';
 import ScrollButton from './scrollButton/ScrollButton';
 import { Route, Routes, Navigate } from 'react-router-dom';
+
 
 function App() {
 
@@ -59,11 +60,12 @@ function App() {
 
   return (
     <div className="App">
+      <Suspense>
         <Routes>
           <Route path='/:cluster_alias'
             element={
             <>
-              <Main
+              <MainPageAsync
                 onClick={handleClusterChange}
                 currentCluster={currentCluster}
                 clusters={clusters}
@@ -78,7 +80,7 @@ function App() {
 
           <Route path='/:cluster_alias/:resort_alias' element={
             <>
-              <InfoPage
+              <InfoPageAsync
                 resorts={resorts}
                 clusters={clusters}
                 setCurrentCluster={setCurrentCluster}
@@ -90,9 +92,10 @@ function App() {
             </>
           }/>
 
-          <Route path='/404' element={<PageNotFound currentCluster={currentCluster}/>}/>
+          <Route path='/404' element={<NotFoundPageAsync currentCluster={currentCluster}/>}/>
           <Route path='/*' element={<Navigate replace to='/msk' />}/>
         </Routes>
+      </Suspense>
     </div>
   );
 }

@@ -5,13 +5,15 @@ function ScrollButton() {
 
   const [isVisible, setIsVisible] = React.useState(false);
 
+  const [isScrolled, setIsScrolled] = React.useState(false);
+
   function toggleVisible() {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300){
-      setIsVisible(true)
+    const scroll = document.documentElement.scrollTop;
+    if (scroll > 300){
+      setIsScrolled(true);
     } 
-    else if (scrolled <= 300){
-      setIsVisible(false)
+    else if (scroll <= 300){
+      setIsScrolled(false)
     }
   }
 
@@ -22,7 +24,12 @@ function ScrollButton() {
     });
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  React.useEffect(() => {
+    window.addEventListener('scroll', toggleVisible);
+    isScrolled ? setIsVisible(true) : setIsVisible(false);
+
+    return () => window.removeEventListener('scroll', toggleVisible);
+  }, [isScrolled])
 
   return (
     <button onClick={scrollToTop} className={`${styles.btn_scroll} ${isVisible ? styles.visible : ''}`}>

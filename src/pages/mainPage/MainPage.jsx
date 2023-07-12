@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
-import './Main.css';
-import Card from '../card/Card';
-import Skeleton from '../skeleton/Skeleton';
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import './MainPage.css';
+import Card from '../../components/card/Card';
+import Skeleton from '../../components/skeleton/Skeleton';
 
 function Main ({clusters, resorts, currentCluster, onClick, isLoading, setCurrentCluster}) {
 
