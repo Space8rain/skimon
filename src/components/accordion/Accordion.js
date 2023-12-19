@@ -65,32 +65,42 @@ function Accordion({title, type, props}) {
             );
 
         case 'prices':
-          return (
-            <ul className={styles.accordion_items}>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Ски-пасс будни
-                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekday ?? '...'} ₽</p>
+            return (
+                <div>
+                    {data.tariffs && Array.isArray(data.tariffs) && data.tariffs.length > 0 ? (
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col">Тариф</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Будни</th>
+                        <th className={styles.open} scope="col">Выходные</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {renderPrices(data)}
+                    </tbody>
+                </table>
+                    ) : (
+                        <p>Данные о ценах отсутствуют</p>
+                    )}
                 </div>
-              </li>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Ски-пасс выходные
-                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekend ?? '...'} ₽</p>
-                </div>
-              </li>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Инструктор
-                  <p className={styles.accordion_item_value}>от {data?.prices?.instructor ?? '...'} ₽</p>
-                </div>
-              </li>
-            </ul>
-          )
+            );
 
       default: return null
     };
   }
+
+    const renderPrices = (data) => {
+        return data?.tariffs?.map(tariffs => (
+            <tr>
+                <td data-label="Тариф">{tariffs?.tariff_name}</td>
+                <td data-label="Цена">{tariffs?.amount} ₽</td>
+                <td data-label="Будни">{tariffs?.weekday} {tariffs?.currency}</td>
+                <td className={styles.open} data-label="Выходные">{tariffs?.weekend} {tariffs?.currency}</td>
+            </tr>
+        ));
+    };
 
   return (
     <div className={styles.accordion}>
