@@ -68,19 +68,21 @@ function Accordion({title, type, props}) {
             return (
                 <div>
                     {data.tariffs && Array.isArray(data.tariffs) && data.tariffs.length > 0 ? (
-                <table>
-                    <thead>
-                    <tr>
-                        <th scope="col">Тариф</th>
-                        <th scope="col">Цена</th>
-                        <th scope="col">Будни</th>
-                        <th className={styles.open} scope="col">Выходные</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {renderPrices(data)}
-                    </tbody>
-                </table>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Тариф</th>
+                                <th scope="col">Цена</th>
+                                {data.tariffs.some(tariff => tariff.weekday) && <th scope="col">Будни</th>}
+                                {data.tariffs.some(tariff => tariff.weekend) && (
+                                    <th className={styles.open} scope="col">
+                                        Выходные
+                                    </th>
+                                )}
+                            </tr>
+                            </thead>
+                            <tbody>{renderPrices(data)}</tbody>
+                        </table>
                     ) : (
                         <p>Данные о ценах отсутствуют</p>
                     )}
@@ -92,12 +94,14 @@ function Accordion({title, type, props}) {
   }
 
     const renderPrices = (data) => {
-        return data?.tariffs?.map(tariffs => (
-            <tr>
+        return data?.tariffs?.map((tariffs) => (
+            <tr key={tariffs?.tariff_name}>
                 <td data-label="Тариф">{tariffs?.tariff_name}</td>
                 <td data-label="Цена">{tariffs?.amount} ₽</td>
-                <td data-label="Будни">{tariffs?.weekday} {tariffs?.currency}</td>
-                <td className={styles.open} data-label="Выходные">{tariffs?.weekend} {tariffs?.currency}</td>
+                {tariffs?.weekday && <td data-label="Будни">{`${tariffs?.weekday || ''} ${tariffs?.currency || ''}`}</td>}
+                {tariffs?.weekend && (
+                    <td className={styles.open} data-label="Выходные">{`${tariffs?.weekend || ''} ${tariffs?.currency || ''}`}</td>
+                )}
             </tr>
         ));
     };
