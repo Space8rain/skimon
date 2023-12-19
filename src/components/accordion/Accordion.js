@@ -24,27 +24,45 @@ function Accordion({title, type, props}) {
           ))
         );
 
-      case 'schedule':
-        return (
-          <ul className={styles.accordion_items}>
-            <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
-            {data?.working_hours.map((day) => (
-              <li className={`${styles.accordion_item} ${styles.schedule}`} key={day.day_of_week}>
-                <div className={styles.accordion_item_title}>{
-                  day.day_of_week === '1' ? 'Понедельник' :
-                  day.day_of_week === '2' ? 'Вторник' :
-                  day.day_of_week === '3' ? 'Среда' :
-                  day.day_of_week === '4' ? 'Четверг' :
-                  day.day_of_week === '5' ? 'Пятница' :
-                  day.day_of_week === '6' ? 'Суббота' :
-                  day.day_of_week === '7' ? 'Воскресенье' : ''
-                  }
-                  <p className={styles.accordion_item_value}>{day.open_time} - {day.close_time}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )
+        case 'schedule':
+            return (
+                <ul className={styles.accordion_items}>
+                    {/*TODO: переименовать статус или выводить в зависимости от времени на клиенте*/}
+                    <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>
+                        {data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}
+                    </p>
+                    {[1, 2, 3, 4, 5, 6, 7].map((dayNumber) => {
+                        const day = data?.working_hours.find((item) => item.day_of_week === String(dayNumber));
+                        return (
+                            <li
+                                className={`${styles.accordion_item} ${styles.schedule}`}
+                                key={dayNumber}
+                            >
+                                <div className={styles.accordion_item_title}>
+                                    {dayNumber === 1
+                                        ? 'Понедельник'
+                                        : dayNumber === 2
+                                        ? 'Вторник'
+                                        : dayNumber === 3
+                                        ? 'Среда'
+                                        : dayNumber === 4
+                                        ? 'Четверг'
+                                        : dayNumber === 5
+                                        ? 'Пятница'
+                                        : dayNumber === 6
+                                        ? 'Суббота'
+                                        : dayNumber === 7
+                                        ? 'Воскресенье'
+                                        : ''}
+                                    <p className={`${styles.accordion_item_value} ${!day && styles.close}`}>
+                                        {day ? `${day.open_time} - ${day.close_time}` : 'Выходной'}
+                                    </p>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            );
 
         case 'prices':
           return (
