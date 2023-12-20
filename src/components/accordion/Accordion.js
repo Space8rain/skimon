@@ -18,7 +18,7 @@ function Accordion({title, type, props}) {
             <li className={styles.webcam} key={stream.webcam_id}>
               {stream.type === 'code' 
               ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
-              : <iframe src={stream.data} title="webcams"/>
+              : <iframe src={stream.data} title="webcams" allowFullScreen/>
             }
             </li>
           ))
