@@ -1,10 +1,12 @@
-import { useState, useLayoutEffect, useEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import styles from './InfoPage.module.css';
 import Accordion from "../../components/accordion/Accordion";
 import Footer from "../../components/footer/Footer";
 import Skeleton from "../../components/skeleton/Skeleton";
+import { Helmet } from 'react-helmet';
+import {mainTitle, shortTitleName} from '../../constants';
 
 function InfoPage({resorts, device, isLoading, currentCluster, clusters, setCurrentCluster, ...props}) {
 
@@ -73,6 +75,9 @@ function InfoPage({resorts, device, isLoading, currentCluster, clusters, setCurr
       </div>
       ) : (
         <div className={styles.infoPage}>
+        <Helmet>
+          <title>{`${resort?.name} | ${shortTitleName}`}</title>
+        </Helmet>
         <header>
           <Link className={styles.btn_back} to={`/${currentCluster.cluster_alias}`}>
             {/* Стрелка влево */}

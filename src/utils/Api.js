@@ -30,7 +30,7 @@ class Api {
 }
 
 const api = new Api({
-  url: 'https://skimon.enot.dev/api/1/'
+  url: 'https://ski.enot.dev/api/1/'
 })
 
 export default api

@@ -18,61 +18,93 @@ function Accordion({title, type, props}) {
             <li className={styles.webcam} key={stream.webcam_id}>
               {stream.type === 'code' 
               ? <div dangerouslySetInnerHTML={{__html: stream.data}} ></div>
-              : <iframe src={stream.data} title="webcams"/>
+              : <iframe src={stream.data} title="webcams" allowFullScreen/>
             }
             </li>
           ))
         );
 
-      case 'schedule':
-        return (
-          <ul className={styles.accordion_items}>
-            <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>{data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}</p>
-            {data?.working_hours.map((day) => (
-              <li className={`${styles.accordion_item} ${styles.schedule}`} key={day.day_of_week}>
-                <div className={styles.accordion_item_title}>{
-                  day.day_of_week === '1' ? 'Понедельник' :
-                  day.day_of_week === '2' ? 'Вторник' :
-                  day.day_of_week === '3' ? 'Среда' :
-                  day.day_of_week === '4' ? 'Четверг' :
-                  day.day_of_week === '5' ? 'Пятница' :
-                  day.day_of_week === '6' ? 'Суббота' :
-                  day.day_of_week === '7' ? 'Воскресенье' : ''
-                  }
-                  <p className={styles.accordion_item_value}>{day.open_time} - {day.close_time}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )
+        case 'schedule':
+            return (
+                <ul className={styles.accordion_items}>
+                    {/*TODO: переименовать статус или выводить в зависимости от времени на клиенте*/}
+                    <p className={`${styles.status} ${data.status ? styles.open : styles.close}`}>
+                        {data.status ? 'Сейчас открыто' : 'Сейчас закрыто'}
+                    </p>
+                    {[1, 2, 3, 4, 5, 6, 7].map((dayNumber) => {
+                        const day = data?.working_hours.find((item) => item.day_of_week === String(dayNumber));
+                        return (
+                            <li
+                                className={`${styles.accordion_item} ${styles.schedule}`}
+                                key={dayNumber}
+                            >
+                                <div className={styles.accordion_item_title}>
+                                    {dayNumber === 1
+                                        ? 'Понедельник'
+                                        : dayNumber === 2
+                                        ? 'Вторник'
+                                        : dayNumber === 3
+                                        ? 'Среда'
+                                        : dayNumber === 4
+                                        ? 'Четверг'
+                                        : dayNumber === 5
+                                        ? 'Пятница'
+                                        : dayNumber === 6
+                                        ? 'Суббота'
+                                        : dayNumber === 7
+                                        ? 'Воскресенье'
+                                        : ''}
+                                    <p className={`${styles.accordion_item_value} ${!day && styles.close}`}>
+                                        {day ? `${day.open_time} - ${day.close_time}` : 'Выходной'}
+                                    </p>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            );
 
         case 'prices':
-          return (
-            <ul className={styles.accordion_items}>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Ски-пасс будни
-                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekday ?? '...'} ₽</p>
+            return (
+                <div>
+                    {data.tariffs && Array.isArray(data.tariffs) && data.tariffs.length > 0 ? (
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Тариф</th>
+                                <th scope="col">Цена</th>
+                                {data.tariffs.some(tariff => tariff.weekday) && <th scope="col">Будни</th>}
+                                {data.tariffs.some(tariff => tariff.weekend) && (
+                                    <th className={styles.open} scope="col">
+                                        Выходные
+                                    </th>
+                                )}
+                            </tr>
+                            </thead>
+                            <tbody>{renderPrices(data)}</tbody>
+                        </table>
+                    ) : (
+                        <p>Данные о ценах отсутствуют</p>
+                    )}
                 </div>
-              </li>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Ски-пасс выходные
-                  <p className={styles.accordion_item_value}>от {data?.prices?.skipass_weekend ?? '...'} ₽</p>
-                </div>
-              </li>
-              <li className={styles.accordion_item}>
-                <div className={styles.accordion_item_title}>
-                  Инструктор
-                  <p className={styles.accordion_item_value}>от {data?.prices?.instructor ?? '...'} ₽</p>
-                </div>
-              </li>
-            </ul>
-          )
+            );
 
       default: return null
     };
   }
+
+    const renderPrices = (data) => {
+        return data?.tariffs?.map((tariffs) => (
+            <tr key={tariffs?.tariff_name}>
+                <td data-label="Тариф">{tariffs?.tariff_name}</td>
+                <td data-label="Цена">{tariffs?.amount} ₽</td>
+                {tariffs?.weekday && <td data-label="Будни">{`${tariffs?.weekday || ''} ${tariffs?.currency || ''}`}</td>}
+                {tariffs?.weekend && (
+                    <td className={styles.open} data-label="Выходные">{`${tariffs?.weekend || ''} ${tariffs?.currency || ''}`}</td>
+                )}
+            </tr>
+        ));
+    };
 
   return (
     <div className={styles.accordion}>

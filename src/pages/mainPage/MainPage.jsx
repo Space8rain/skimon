@@ -5,6 +5,8 @@ import Footer from '../../components/footer/Footer';
 import './MainPage.css';
 import Card from '../../components/card/Card';
 import Skeleton from '../../components/skeleton/Skeleton';
+import { Helmet } from 'react-helmet';
+import { mainTitle } from '../../constants';
 
 function Main ({clusters, resorts, currentCluster, onClick, isLoading, setCurrentCluster}) {
 
@@ -27,6 +29,9 @@ function Main ({clusters, resorts, currentCluster, onClick, isLoading, setCurren
 
   return (
     <>
+      <Helmet>
+        <title>{`${mainTitle}`}</title>
+      </Helmet>
       <Header
         onClick={onClick}
         currentCluster={currentCluster}
